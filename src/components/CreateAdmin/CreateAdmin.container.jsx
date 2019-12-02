@@ -1,14 +1,16 @@
-// import { connect } from 'react-redux'
-// import CreateAdminComponent from './CreateAdmin.component'
+import { connect } from 'react-redux'
+import CreateAdminComponent from './CreateAdmin.component'
+import { createAccount, clearCreateAccount } from '../../redux/user/user.actions'
 
-// const mapStateToProps = state => ({
+const mapStateToProps = state => ({
+  createAccount: state.user.createAccount,
+})
 
-// })
+const mapDispatchToProps = dispath => ({
+  createAccountStart: user => dispath(createAccount(user)),
+  clearCreateAccount: () => dispath(clearCreateAccount()),
+})
 
-// const mapDispatchToProps = dispath => ({
-//   loginStart: (email, password) => dispath(loginStart(email, password)),
-// })
+const CreateAdminContainer = connect(mapStateToProps, mapDispatchToProps)(CreateAdminComponent)
 
-// const CreateAdminContainer = connect(mapStateToProps, mapDispatchToProps)(CreateAdminComponent)
-
-// export default CreateAdminContainer
+export default CreateAdminContainer

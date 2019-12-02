@@ -29,4 +29,59 @@ export default class UserService {
         throw new Error(err.message)
       })
   }
+
+  static createAccount = user => {
+    const api = `${apiUrl}/admin/create`
+    let status = 400
+
+    // eslint-disable-next-line no-undef
+    return fetch(api, {
+      method: 'POST',
+      body: JSON.stringify(user),
+      headers: {
+        'Content-type': 'application/json; charset=UTF-8',
+      },
+    })
+      .then(response => {
+        status = response.status
+        return response.json()
+      })
+      .then(result => {
+        if (status === 200) {
+          return result
+        }
+
+        throw new Error(result.message)
+      })
+      .catch(err => {
+        throw new Error(err.message)
+      })
+  }
+
+  static getAllAdmin = () => {
+    const api = `${apiUrl}/admin/`
+    let status = 400
+
+    // eslint-disable-next-line no-undef
+    return fetch(api, {
+      method: 'GET',
+      headers: {
+        'Content-type': 'application/json; charset=UTF-8',
+      },
+    })
+      .then(response => {
+        status = response.status
+        return response.json()
+      })
+      .then(result => {
+        if (status === 200) {
+          return result
+        }
+
+        throw new Error(result.message)
+      })
+      .catch(err => {
+        throw new Error(err.message)
+      })
+  }
 }
