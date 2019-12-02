@@ -1,6 +1,6 @@
 @import '../../common/common.style.scss';
 
-.login-page {
+.create-account-page {
   margin: auto;
   display: flex;
   flex-direction: column;
@@ -18,18 +18,18 @@
   .text-alternative {
     margin-top: 20px;
   }
-  .login-form {
+  .create-account-form {
     margin: 3rem auto;
     width: 400px;
     &__bottom {
       display: flex;
       flex-direction: column;
-      .login-form-forgot {
+      .create-account-form-forgot {
         text-align: right;
         display: block;
         margin-bottom: 5px;
       }
-      .btn-login {
+      .btn-create-account {
         width: fit-content;
         margin: auto;
       }
