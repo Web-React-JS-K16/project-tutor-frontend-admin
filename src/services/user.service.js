@@ -1,73 +1,87 @@
 import apiUrl from './api-url'
 
 export default class UserService {
-  static login = ({ email, password }) => {
-    const api = `${apiUrl}/user/login`
+  static login = user => {
+    console.log('user: ', user)
+    const api = `${apiUrl}/admin/login`
+    let status = 400
 
     // eslint-disable-next-line no-undef
     return fetch(api, {
       method: 'POST',
-      body: JSON.stringify({
-        email,
-        password,
-      }),
+      body: JSON.stringify(user),
       headers: {
         'Content-type': 'application/json; charset=UTF-8',
       },
     })
       .then(response => {
-        if (!response.ok) {
-          throw new Error('Xảy ra lỗi')
-        }
+        status = response.status
         return response.json()
       })
       .then(result => {
-        if (!result.user) {
-          throw new Error(result.message)
+        if (status === 200) {
+          return result.user
         }
-        return result.user
+
+        throw new Error(result.message)
       })
       .catch(err => {
-        throw new Error(err)
+        throw new Error(err.message)
       })
-
-    // switch (type.toLowercase()) {
-    //   case 'google':
-    //     console.log('google')
-    //     break
-    //   case 'facebook':
-    //     console.log('fb')
-    //     break
-    //   default: {
-
-    //   }
-    // }
   }
 
-  static loginGoogle = () => {
-    const api = `${apiUrl}/user/login-google`
+  static createAccount = user => {
+    const api = `${apiUrl}/admin/create`
+    let status = 400
 
     // eslint-disable-next-line no-undef
     return fetch(api, {
       method: 'POST',
+      body: JSON.stringify(user),
       headers: {
         'Content-type': 'application/json; charset=UTF-8',
       },
     })
       .then(response => {
-        if (!response.ok) {
-          throw new Error('Xảy ra lỗi')
-        }
+        status = response.status
         return response.json()
       })
       .then(result => {
-        if (!result.user) {
-          throw new Error(result.message)
+        if (status === 200) {
+          return result
         }
-        return result.user
+
+        throw new Error(result.message)
       })
       .catch(err => {
-        throw new Error(err)
+        throw new Error(err.message)
+      })
+  }
+
+  static getAllAdmin = () => {
+    const api = `${apiUrl}/admin/`
+    let status = 400
+
+    // eslint-disable-next-line no-undef
+    return fetch(api, {
+      method: 'GET',
+      headers: {
+        'Content-type': 'application/json; charset=UTF-8',
+      },
+    })
+      .then(response => {
+        status = response.status
+        return response.json()
+      })
+      .then(result => {
+        if (status === 200) {
+          return result
+        }
+
+        throw new Error(result.message)
+      })
+      .catch(err => {
+        throw new Error(err.message)
       })
   }
 }

@@ -3,36 +3,33 @@
 import React from 'react'
 // import PropTypes from 'prop-types'
 import { Form, Icon, Input, Button } from 'antd'
+import { Redirect } from 'react-router-dom'
 import './LoginPage.style.scss'
-import LoginWithFacebook from './components/LoginWithFacebook/LoginWithFacebook.component'
-import LoginWithGoogle from './components/LoginWithGoogle/LoginWithGoogle.component'
 
-const LoginPage = ({ form, login }) => {
+const LoginPage = ({ currentUser, form, loginStart, login: { isLoading, isSuccess, message } }) => {
   const handleSubmit = e => {
     e.preventDefault()
     form.validateFields((err, values) => {
       if (!err) {
         console.log('Received values of form: ', values)
         const { email, password } = values
-        login(email, password)
+        loginStart(email, password)
       }
     })
   }
 
   const { getFieldDecorator } = form
 
+  if (currentUser) {
+    return <Redirect to="/" />
+  }
   return (
     <div className="login-page">
-      <h1 className="login-page__title">Đăng nhập</h1>
-      <div className="login-page__social">
-        <div className="btn-social btn--google">
-          <LoginWithGoogle />
-        </div>
-        <div className="btn-social btn--facebook">
-          <LoginWithFacebook />
-        </div>
-      </div>
-      <div className="text-alternative">hoặc</div>
+      <h1 className="login-page__title">
+        Đăng nhập
+        <div>Admin</div>
+      </h1>
+
       <Form onSubmit={handleSubmit} className="login-form">
         <Form.Item>
           {getFieldDecorator('email', {
@@ -62,19 +59,17 @@ const LoginPage = ({ form, login }) => {
           )}
         </Form.Item>
         <div className="login-form__bottom">
-          <div>
-            <a className="login-form-forgot" href="">
-              Quên mật khẩu
-            </a>
-          </div>
-          <Button type="primary" htmlType="submit" className="login-form-button btn-login">
+          <Button
+            type="primary"
+            htmlType="submit"
+            className="login-form-button btn-login"
+            loading={isLoading}
+          >
             Đăng nhập
           </Button>
-          <div className="register">
-            Hoặc <a href="">Đăng ký</a>
-          </div>
         </div>
       </Form>
+      {!isLoading && !isSuccess && <div className="message--error">{message}</div>}
     </div>
   )
 }
