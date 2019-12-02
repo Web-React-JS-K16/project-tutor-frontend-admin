@@ -3,11 +3,12 @@ import { loginStart } from '../../redux/user/user.actions'
 import LoginPage from './LoginPage.component'
 
 const mapStateToProps = state => ({
-  user: state.user,
+  currentUser: state.user.currentUser,
+  login: state.user.login,
 })
 
 const mapDispatchToProps = dispath => ({
-  login: (email, password) => dispath(loginStart(email, password)),
+  loginStart: (email, password) => dispath(loginStart(email, password)),
 })
 
 const LoginPageContainer = connect(mapStateToProps, mapDispatchToProps)(LoginPage)
