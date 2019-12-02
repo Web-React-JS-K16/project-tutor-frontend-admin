@@ -3,35 +3,20 @@ import UserTypes from './user.types'
 import { loginSuccess, loginFailure } from './user.actions'
 import UserService from '../../services/user.service'
 
-export function* login({ payload: { email, password } }) {
+// login
+function* login({ payload }) {
   try {
-    const user = yield UserService.login({ email, password })
+    const user = yield UserService.login(payload)
     yield put(loginSuccess(user))
   } catch (err) {
     console.log('ERR')
     yield put(loginFailure(err.message))
   }
 }
-
-export function* loginGoogle() {
-  try {
-    const user = yield UserService.loginGoogle()
-    yield put(loginSuccess(user))
-  } catch (err) {
-    console.log('ERR')
-    yield put(loginFailure(err.message))
-  }
-}
-
-export function* loginStartSagas() {
+function* loginStartSagas() {
   yield takeLatest(UserTypes.LOGIN_START, login)
 }
 
-export function* loginGoogleStartSagas() {
-  console.log('on start')
-  yield takeLatest(UserTypes.LOGIN_GOOGLE_START, loginGoogle)
-}
-
-export function* userSaga() {
-  yield all([call(loginStartSagas), call(loginGoogleStartSagas)])
+export default function* userSaga() {
+  yield all([call(loginStartSagas)])
 }

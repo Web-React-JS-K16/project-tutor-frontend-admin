@@ -39,3 +39,13 @@ input {
     border: 1px solid $color-main !important;
   }
 }
+
+.message {
+  text-align: center;
+  &--error{
+    color: #d93025;
+  }
+  &--success {
+    color: #31c754;
+  }
+}
