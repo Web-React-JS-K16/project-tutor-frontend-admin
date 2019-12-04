@@ -1,11 +1,5 @@
-let hostURL
-if (process.env.NODE_ENV === 'production') {
-  hostURL = 'https://tutor-back-end-admin.herokuapp.com'
-} else {
-  hostURL = 'http://localhost:5000'
-}
+const apiUrl = 'https://tutor-back-end-admin.herokuapp.com'
+// const apiUrl = 'http://localhost:5000'
 
-const apiUrl = hostURL
-console.log('url: ', apiUrl)
-
+console.log('env: ', process.env.NODE_ENV)
 export default apiUrl
