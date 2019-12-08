@@ -6,7 +6,7 @@ import HomePageComponent from './components/HomePage/HomePage.component'
 import CreateAdminContainer from './components/CreateAdmin/CreateAdmin.container'
 
 const App = () => {
-  console.log('in app.js, process env: ', process.env.NODE_ENV)
+  console.log('in app.js, process env 2: ', process.env.NODE_ENV)
   return (
     <div>
       <Switch>
