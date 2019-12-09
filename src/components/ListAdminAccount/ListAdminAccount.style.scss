@@ -1,0 +1,9 @@
+@import '../../common/common.style.scss';
+
+.list-admin-account {
+  margin: auto;
+  text-align: center;
+  &__content {
+    margin-left: 50px;
+  }
+}

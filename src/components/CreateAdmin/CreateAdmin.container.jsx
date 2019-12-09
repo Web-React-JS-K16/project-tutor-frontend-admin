@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
-import CreateAdminComponent from './CreateAdmin.component'
 import { createAccount, clearCreateAccount } from '../../redux/user/user.actions'
+import CreateAdminComponent from './CreateAdmin.component'
 
 const mapStateToProps = state => ({
   createAccount: state.user.createAccount,
