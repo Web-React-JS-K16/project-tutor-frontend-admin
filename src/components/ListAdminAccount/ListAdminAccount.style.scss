@@ -1,17 +1,9 @@
 @import '../../common/common.style.scss';
 
-.home-page {
+.list-admin-account {
   margin: auto;
   text-align: center;
   &__content {
     margin-left: 50px;
-  }
-  &__btns{
-    margin-top: 20px;
-    a{
-      margin: 20px 10px;
-    }
-   
-
   }
 }

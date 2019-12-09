@@ -1,17 +1,15 @@
 import React from 'react'
-import { Switch, Route } from 'react-router-dom'
-import LoginPageContainer from './components/LoginPage/LoginPage.container'
+import { Switch, Route, Redirect } from 'react-router-dom'
 import 'antd/dist/antd.css'
-import HomePageComponent from './components/HomePage/HomePage.component'
-import CreateAdminContainer from './components/CreateAdmin/CreateAdmin.container'
+import Admin from './layouts/Admin'
 
 const App = () => {
+  console.log('in app.js, process env 2: ', process.env.NODE_ENV)
   return (
     <div>
       <Switch>
-        <Route exact path="/" component={HomePageComponent} />
-        <Route path="/login" component={LoginPageContainer} />
-        <Route path="/account/create" component={CreateAdminContainer} />
+        <Route path="/admin" component={Admin} />
+        <Redirect from="/" to="/admin/account/admin" />
       </Switch>
     </div>
   )

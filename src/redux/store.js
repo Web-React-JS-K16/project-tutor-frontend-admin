@@ -12,6 +12,8 @@ if (process.env.NODE_ENV !== 'production') {
   middlewares.push(logger)
 }
 
+console.log('in store.js, process env: ', process.env.NODE_ENV)
+
 export const store = createStore(rootReducer, applyMiddleware(...middlewares))
 sagaMiddleWare.run(rootSagas)
 export const persistor = persistStore(store)
