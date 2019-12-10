@@ -1,0 +1,23 @@
+.table-account {
+    .ant-table-row:hover {
+        cursor: pointer;
+    }
+
+    .unblock {
+        color: #52c41a !important;
+        text-decoration: underline;
+
+        &:hover {
+            color: darken(#52c41a, 50%) !important;
+        }
+    }
+
+    .block {
+        color: #f5222d !important;
+        text-decoration: underline;
+
+        &:hover {
+            color: darken(#f5222d, 50%) !important;
+        }
+    }
+}

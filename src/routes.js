@@ -24,8 +24,59 @@ import EqualizerIcon from '@material-ui/icons/Equalizer'
 import SupervisorAccountIcon from '@material-ui/icons/SupervisorAccount'
 import CreateAdminContainer from './components/CreateAdmin/CreateAdmin.container'
 import AccountAdminPage from './view/AccountAdminPage/AccountAdminPage.component'
+import ManagerAccountUserContainer from './components/ManagerAccountUser/ManagerAccountUser.container'
+import DetailInformationUserContainer from './components/DetailInformationUser/DetailInformationUser.container'
 
 const dashboardRoutes = [
+  {
+    path: '/account/admin',
+    name: 'Tài khoản admin',
+    component: AccountAdminPage,
+    layout: '/admin',
+  },
+  {
+    path: '/account/user/:_id',
+    name: 'Thông tin chi tiết',
+    component: DetailInformationUserContainer,
+    layout: '/admin',
+  },
+  {
+    path: '/account/user',
+    name: 'Tài khoản người dùng',
+    component: ManagerAccountUserContainer,
+    layout: '/admin',
+  },
+  {
+    path: '/skill',
+    name: 'Tag kỹ năng',
+    rtlName: 'لوحة القيادة',
+    component: CreateAdminContainer,
+    layout: '/admin',
+  },
+  {
+    path: '/contract',
+    name: 'Hợp đồng',
+    rtlName: 'لوحة القيادة',
+    component: CreateAdminContainer,
+    layout: '/admin',
+  },
+  {
+    path: '/report',
+    name: 'Khiếu nại, tố cáo',
+    rtlName: 'لوحة القيادة',
+    component: CreateAdminContainer,
+    layout: '/admin',
+  },
+  {
+    path: '/statistic',
+    name: 'Thống kê',
+    rtlName: 'لوحة القيادة',
+    component: CreateAdminContainer,
+    layout: '/admin',
+  },
+]
+
+const navBarRoutes = [
   {
     path: '/account/admin',
     name: 'Tài khoản admin',
@@ -37,7 +88,7 @@ const dashboardRoutes = [
     path: '/account/user',
     name: 'Tài khoản người dùng',
     icon: SupervisorAccountIcon,
-    component: CreateAdminContainer,
+    component: ManagerAccountUserContainer,
     layout: '/admin',
   },
   {
@@ -74,4 +125,4 @@ const dashboardRoutes = [
   },
 ]
 
-export default dashboardRoutes
+export { dashboardRoutes, navBarRoutes }

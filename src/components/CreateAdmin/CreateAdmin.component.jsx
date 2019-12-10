@@ -11,7 +11,6 @@ const CreateAdminComponent = ({
   clearCreateAccount,
 }) => {
   useEffect(() => {
-    console.log('on use effect: ', isSuccess)
     if (isSuccess) {
       message.info(createAccount.message)
       form.resetFields()
@@ -24,7 +23,6 @@ const CreateAdminComponent = ({
     e.preventDefault()
     form.validateFields((err, values) => {
       if (!err) {
-        console.log('Received values of form: ', values)
         const { email, password, displayName } = values
         createAccountStart({ email, password, displayName })
       }
