@@ -7,6 +7,7 @@ import DetailInformationUser from './DetailInformationUser.component'
 const mapStateToProps = state => ({
   user: state.user.getInforUser.data,
   loading: state.user.getInforUser.isLoading,
+  messageInfo: state.user.getInforUser.message,
 })
 
 const mapDispatchToProps = dispatch => ({

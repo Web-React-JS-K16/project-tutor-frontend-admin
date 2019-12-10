@@ -1,3 +1,4 @@
+/* eslint-disable no-nested-ternary */
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable react/prop-types */
@@ -8,7 +9,7 @@ import React, { useEffect } from 'react'
 import { PageHeader, Descriptions, Avatar, Tag, Alert, Button, Rate, Progress, Spin } from 'antd'
 import * as moment from 'moment'
 
-export const DetailInformationUser = ({ user, loading, history, getInforUser }) => {
+export const DetailInformationUser = ({ user, messageInfo, loading, history, getInforUser }) => {
   useEffect(() => {
     const {
       location: { pathname },
@@ -30,6 +31,18 @@ export const DetailInformationUser = ({ user, loading, history, getInforUser }) 
         >
           <Spin size="large" />
         </div>
+      ) : messageInfo ? (
+        <Alert
+          message="Oops"
+          description="Có lỗi trong quá trình xảy ra. Vui lòng thử lại"
+          type="error"
+          style={{
+            width: '240px',
+            margin: '30px',
+            marginLeft: 'auto',
+            marginRight: 'auto',
+          }}
+        />
       ) : (
         <>
           {user ? (
@@ -52,7 +65,7 @@ export const DetailInformationUser = ({ user, loading, history, getInforUser }) 
                     <Descriptions.Item label="Email">{user.userId.email}</Descriptions.Item>
                     <Descriptions.Item label="Số điện thoại">{user.userId.phone}</Descriptions.Item>
                     <Descriptions.Item label="Ngày sinh">
-                      {moment(user.userId.birthday).format('L')}
+                      {moment(user.userId.birthdate).format('L')}
                     </Descriptions.Item>
                     <Descriptions.Item label="Địa chỉ">
                       268 Lý Thái Tổ, quận 3, Hồ Chí Minh

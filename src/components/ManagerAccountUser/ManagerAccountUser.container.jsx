@@ -5,8 +5,10 @@ import ManagerAccountUser from './ManagerAccountUser.component'
 const mapStateToProps = state => ({
   students: state.user.getAllStudent.data,
   loadingSt: state.user.getAllStudent.isLoading,
+  messageInfoSt: state.user.getAllStudent.message,
   teachers: state.user.getAllTeacher.data,
   loadingTc: state.user.getAllTeacher.isLoading,
+  messageInfoTc: state.user.getAllTeacher.message,
 })
 
 const mapDispatchToProps = dispatch => ({

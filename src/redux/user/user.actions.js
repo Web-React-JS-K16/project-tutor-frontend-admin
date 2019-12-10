@@ -43,7 +43,7 @@ export const getAllUserSuccess = ({ data }) => ({
   payload: { data },
 })
 
-export const getAllUserFailure = ({ message }) => ({
+export const getAllUserFailure = message => ({
   type: UserTypes.GET_ALL_USER_FAILURE,
   payload: { message },
 })
@@ -58,7 +58,7 @@ export const getAllStudentSuccess = ({ data }) => ({
   payload: { data },
 })
 
-export const getAllStudentFailure = ({ message }) => ({
+export const getAllStudentFailure = message => ({
   type: UserTypes.GET_ALL_STUDENT_FAILURE,
   payload: { message },
 })
@@ -73,7 +73,7 @@ export const getAllTeacherSuccess = ({ data }) => ({
   payload: { data },
 })
 
-export const getAllTeacherFailure = ({ message }) => ({
+export const getAllTeacherFailure = message => ({
   type: UserTypes.GET_ALL_TEACHER_FAILURE,
   payload: { message },
 })
@@ -89,7 +89,7 @@ export const getInforUserSuccess = ({ data }) => ({
   payload: { data },
 })
 
-export const getInforUserFailure = ({ message }) => ({
+export const getInforUserFailure = message => ({
   type: UserTypes.GET_INFOR_USER_FAILURE,
   payload: { message },
 })

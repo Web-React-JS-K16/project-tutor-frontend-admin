@@ -4,7 +4,7 @@ import './ManagerAccountUser.scss'
 
 import React, { useEffect } from 'react'
 import * as moment from 'moment'
-import { Table, Tag, Tabs, Avatar } from 'antd'
+import { Table, Tag, Tabs, Avatar, Alert } from 'antd'
 import { Link } from 'react-router-dom'
 
 const { TabPane } = Tabs
@@ -40,7 +40,7 @@ const columns = [
     title: 'Ngày sinh',
     key: 'birthday',
     dataIndex: 'birthday',
-    render: (_id, row) => <span>{moment(row.userId.birthday).format('L')}</span>,
+    render: (_id, row) => <span>{moment(row.userId.birthdate).format('L')}</span>,
   },
   {
     title: 'Trạng thái',
@@ -73,8 +73,10 @@ const columns = [
 const ManagerAccountUser = ({
   students,
   loadingSt,
+  messageInfoSt,
   loadingTc,
   teachers,
+  messageInfoTc,
   getAllStudent,
   getAllTeacher,
   history,
@@ -85,30 +87,46 @@ const ManagerAccountUser = ({
   }, [getAllStudent, getAllTeacher])
 
   return (
-    <Tabs type="card">
-      <TabPane tab="Tài khoản giáo viên" key="1">
-        <Table
-          columns={columns}
-          dataSource={teachers}
-          onRow={r => ({
-            onClick: () => history.push(`${history.location.pathname}/${r.userId._id}`),
-          })}
-          className="table-account"
-          loading={loadingTc}
+    <>
+      {messageInfoSt || messageInfoTc ? (
+        <Alert
+          message="Oops"
+          description="Có lỗi trong quá trình xảy ra. Vui lòng thử lại"
+          type="error"
+          style={{
+            width: '240px',
+            margin: '30px',
+            marginLeft: 'auto',
+            marginRight: 'auto',
+          }}
         />
-      </TabPane>
-      <TabPane tab="Tài khoản học sinh" key="2">
-        <Table
-          columns={columns}
-          dataSource={students}
-          onRow={r => ({
-            onClick: () => history.push(`${history.location.pathname}/${r.userId._id}`),
-          })}
-          className="table-account"
-          loading={loadingSt}
-        />
-      </TabPane>
-    </Tabs>
+      ) : (
+        <Tabs type="card">
+          <TabPane tab="Tài khoản giáo viên" key="1">
+            <Table
+              columns={columns}
+              dataSource={teachers}
+              onRow={r => ({
+                onClick: () => history.push(`${history.location.pathname}/${r.userId._id}`),
+              })}
+              className="table-account"
+              loading={loadingTc}
+            />
+          </TabPane>
+          <TabPane tab="Tài khoản học sinh" key="2">
+            <Table
+              columns={columns}
+              dataSource={students}
+              onRow={r => ({
+                onClick: () => history.push(`${history.location.pathname}/${r.userId._id}`),
+              })}
+              className="table-account"
+              loading={loadingSt}
+            />
+          </TabPane>
+        </Tabs>
+      )}
+    </>
   )
 }
 

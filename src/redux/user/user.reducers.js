@@ -85,7 +85,7 @@ const userReducer = (state = INITIAL_STATE, action) => {
         createAccount: {
           isLoading: false,
           isSuccess: false,
-          message: action.payload,
+          message: action.payload.message,
         },
       }
     case UserTypes.CLEAR_CREATE_ACCOUNT:
@@ -118,7 +118,7 @@ const userReducer = (state = INITIAL_STATE, action) => {
         ...state,
         getAllUser: {
           isLoading: false,
-          message: action.payload,
+          message: action.payload.message,
         },
       }
     // get all student
@@ -142,7 +142,7 @@ const userReducer = (state = INITIAL_STATE, action) => {
         ...state,
         getAllStudent: {
           isLoading: false,
-          message: action.payload,
+          message: action.payload.message,
         },
       }
 
@@ -167,7 +167,7 @@ const userReducer = (state = INITIAL_STATE, action) => {
         ...state,
         getAllTeacher: {
           isLoading: false,
-          message: action.payload,
+          message: action.payload.message,
         },
       }
     // get information user
@@ -187,11 +187,12 @@ const userReducer = (state = INITIAL_STATE, action) => {
         },
       }
     case UserTypes.GET_INFOR_USER_FAILURE:
+      console.log(action.payload.message)
       return {
         ...state,
         getInforUser: {
           isLoading: false,
-          message: action.payload,
+          message: action.payload.message,
         },
       }
     default:
