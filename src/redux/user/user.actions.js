@@ -49,13 +49,14 @@ export const getAllUserFailure = message => ({
 })
 
 // get all student
-export const getAllStudent = () => ({
+export const getAllStudent = data => ({
   type: UserTypes.GET_ALL_STUDENT,
+  payload: { data },
 })
 
-export const getAllStudentSuccess = ({ data }) => ({
+export const getAllStudentSuccess = ({ data, length }) => ({
   type: UserTypes.GET_ALL_STUDENT_SUCCESS,
-  payload: { data },
+  payload: { data, length },
 })
 
 export const getAllStudentFailure = message => ({
@@ -64,13 +65,14 @@ export const getAllStudentFailure = message => ({
 })
 
 // get all teacher
-export const getAllTeacher = () => ({
+export const getAllTeacher = data => ({
   type: UserTypes.GET_ALL_TEACHER,
+  payload: { data },
 })
 
-export const getAllTeacherSuccess = ({ data }) => ({
+export const getAllTeacherSuccess = ({ data, length }) => ({
   type: UserTypes.GET_ALL_TEACHER_SUCCESS,
-  payload: { data },
+  payload: { data, length },
 })
 
 export const getAllTeacherFailure = message => ({

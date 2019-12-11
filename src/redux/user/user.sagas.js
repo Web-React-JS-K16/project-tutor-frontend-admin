@@ -61,9 +61,9 @@ function* getAllUserSaga() {
 
 // Get all student
 
-function* getAllStudent() {
+function* getAllStudent(action) {
   try {
-    const data = yield UserService.getAllStudent()
+    const data = yield UserService.getAllStudent(action.payload.data)
     yield put(getAllStudentSuccess(data))
   } catch (err) {
     yield put(getAllStudentFailure(err.message))
@@ -75,9 +75,9 @@ function* getAllStudentSaga() {
 }
 
 // Get all teacher
-function* getAllTeacher() {
+function* getAllTeacher(action) {
   try {
-    const data = yield UserService.getAllTeacher()
+    const data = yield UserService.getAllTeacher(action.payload.data)
     yield put(getAllTeacherSuccess(data))
   } catch (err) {
     yield put(getAllTeacherFailure(err.message))

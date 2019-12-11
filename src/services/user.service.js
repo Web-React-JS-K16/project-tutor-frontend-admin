@@ -110,8 +110,9 @@ export default class UserService {
       })
   }
 
-  static getAllStudent = () => {
-    const api = `${apiUrl}/admin/student`
+  static getAllStudent = data => {
+    const { limit, offset } = data
+    const api = `${apiUrl}/admin/student/${limit}/${offset}`
     let status = 400
 
     // eslint-disable-next-line no-undef
@@ -136,8 +137,9 @@ export default class UserService {
       })
   }
 
-  static getAllTeacher = () => {
-    const api = `${apiUrl}/admin/teacher`
+  static getAllTeacher = data => {
+    const { limit, offset } = data
+    const api = `${apiUrl}/admin/teacher/${limit}/${offset}`
     let status = 400
 
     // eslint-disable-next-line no-undef

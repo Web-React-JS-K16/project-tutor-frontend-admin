@@ -9,11 +9,12 @@ const mapStateToProps = state => ({
   data: state.tag.data,
   dataMajor: state.major.data,
   loadingData: state.major.loading,
+  length: state.tag.length,
 })
 
 const mapDispatchToProps = dispatch => ({
   getAllMajor: () => dispatch(getAllMajor()),
-  getAllTag: () => dispatch(getAllTag()),
+  getAllTag: data => dispatch(getAllTag(data)),
   createTag: data => dispatch(createTag(data)),
   editTag: data => dispatch(editTag(data)),
   deleteTag: data => dispatch(deleteTag(data)),

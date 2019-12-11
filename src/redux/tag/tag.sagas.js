@@ -14,9 +14,9 @@ import {
 import TagService from '../../services/tag.service'
 
 // Get all
-function* getAll() {
+function* getAll(action) {
   try {
-    const data = yield TagService.getAll()
+    const data = yield TagService.getAll(action.payload.data)
     yield put(getAllSuccess(data))
   } catch (err) {
     yield put(getAllFailure(err.message))
@@ -62,9 +62,7 @@ function* editTagSaga() {
 // delete tag
 function* deleteTag(action) {
   try {
-    console.log(action.payload.data)
     const data = yield TagService.deleteTag(action.payload.data)
-    console.log('data', data)
     message.success(data.message)
     yield put(deleteTagSuccess(data))
   } catch (err) {

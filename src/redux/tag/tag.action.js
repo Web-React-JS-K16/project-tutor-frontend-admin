@@ -1,12 +1,13 @@
 import TagType from './tag.types'
 
-export const getAllTag = () => ({
+export const getAllTag = data => ({
   type: TagType.GET_ALL_TAG,
+  payload: { data },
 })
 
-export const getAllSuccess = ({ data }) => ({
+export const getAllSuccess = ({ data, length }) => ({
   type: TagType.GET_ALL_SUCCESS_TAG,
-  payload: { data },
+  payload: { data, length },
 })
 
 export const getAllFailure = message => ({

@@ -1,8 +1,9 @@
 import apiUrl from './api-url'
 
 export default class TagService {
-  static getAll = () => {
-    const api = `${apiUrl}/admin/tag`
+  static getAll = data => {
+    const { limit, offset } = data
+    const api = `${apiUrl}/admin/tag/${limit}/${offset}`
     let status = 400
 
     // eslint-disable-next-line no-undef

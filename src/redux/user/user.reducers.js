@@ -21,11 +21,13 @@ const INITIAL_STATE = {
     data: null,
     isLoading: true,
     message: null,
+    length: 1,
   },
   getAllTeacher: {
     data: null,
     isLoading: false,
     message: null,
+    length: 1,
   },
   getInforUser: {
     data: null,
@@ -135,6 +137,7 @@ const userReducer = (state = INITIAL_STATE, action) => {
         getAllStudent: {
           isLoading: false,
           data: action.payload.data,
+          length: action.payload.length,
         },
       }
     case UserTypes.GET_ALL_STUDENT_FAILURE:
@@ -160,6 +163,7 @@ const userReducer = (state = INITIAL_STATE, action) => {
         getAllTeacher: {
           isLoading: false,
           data: action.payload.data,
+          length: action.payload.length,
         },
       }
     case UserTypes.GET_ALL_TEACHER_FAILURE:

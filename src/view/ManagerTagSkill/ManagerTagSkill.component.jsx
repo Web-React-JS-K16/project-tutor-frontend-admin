@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-no-undef */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable react/prop-types */
 import './ManagerTagSkill.scss'
@@ -5,6 +6,7 @@ import './ManagerTagSkill.scss'
 import React, { useEffect, useState } from 'react'
 import { Table, Tag, Divider, Button, Modal } from 'antd'
 import ModalSkill from '../../components/ModalSkill/ModalSkill.component'
+import CustomPagination from '../../components/Pagination/Pagination.component'
 
 const { confirm } = Modal
 
@@ -17,6 +19,7 @@ const ManagerTagSkill = ({
   getAllTag,
   createTag,
   editTag,
+  length,
   deleteTag,
 }) => {
   const [loading, setLoading] = useState(false)
@@ -24,10 +27,12 @@ const ManagerTagSkill = ({
   const [loadingEdit, setLoadingEdit] = useState(false)
   const [visibleEdit, setVisibleEdit] = useState(false)
   const [tag, setTag] = useState(null)
+  const [currentPage, setCurrentPage] = useState(1)
+  const [pageSize] = useState(5)
 
   useEffect(() => {
     getAllMajor()
-    getAllTag()
+    getAllTag({ limit: pageSize, page: 1 })
   }, [getAllTag, getAllMajor])
 
   const showModal = () => {
@@ -82,6 +87,11 @@ const ManagerTagSkill = ({
     })
   }
 
+  const onChangeTable = page => {
+    setCurrentPage(page)
+    getAllTag({ limit: pageSize, offset: page })
+  }
+
   const columns = [
     {
       title: 'Tên kĩ năng',
@@ -118,7 +128,23 @@ const ManagerTagSkill = ({
         Thêm kĩ năng
       </Button>
       {data ? (
-        <Table columns={columns} dataSource={data} className="tags__table" loading={loadingData} />
+        <Table
+          rowKey={record => record._id}
+          columns={columns}
+          dataSource={data}
+          className="tags__table"
+          loading={loadingData}
+          pagination={false}
+        />
+      ) : null}
+      {!loadingData ? (
+        <CustomPagination
+          current={currentPage}
+          total={length}
+          onChange={onChangeTable}
+          className="pagination-custom"
+          pageSize={pageSize}
+        />
       ) : null}
       <ModalSkill
         showModal={showModal}

@@ -70,6 +70,13 @@ export const DetailInformationUser = ({ user, messageInfo, loading, history, get
                     <Descriptions.Item label="Địa chỉ">
                       268 Lý Thái Tổ, quận 3, Hồ Chí Minh
                     </Descriptions.Item>
+                    {user.tags ? (
+                      <Descriptions.Item label="Kĩ năng">
+                        {user.tags.map(item => (
+                          <Tag color="gold">{item._id.name}</Tag>
+                        ))}
+                      </Descriptions.Item>
+                    ) : null}
                   </Descriptions>
                 </div>
                 {user.userId.typeID === 1 ? (
@@ -83,6 +90,7 @@ export const DetailInformationUser = ({ user, messageInfo, loading, history, get
                       <Descriptions.Item label="Tỉ lệ đánh giá">
                         <Rate disabled defaultValue={user.ratings} />
                       </Descriptions.Item>
+                      <Descriptions.Item label="Giới thiệu">{user.about}</Descriptions.Item>
                     </Descriptions>
                     <div>
                       <span>Tỉ lệ thành công</span>

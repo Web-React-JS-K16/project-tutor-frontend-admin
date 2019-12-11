@@ -5,6 +5,7 @@ const INITIAL_STATE = {
   data: [],
   loading: false,
   err: null,
+  length: 1,
 }
 
 const TagReducers = (state = INITIAL_STATE, action) => {
@@ -23,6 +24,7 @@ const TagReducers = (state = INITIAL_STATE, action) => {
         ...state,
         loading: false,
         data: action.payload.data,
+        length: action.payload.length,
       }
     }
     case TagType.CREATE_SUCCESS_TAG: {
