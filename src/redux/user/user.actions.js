@@ -32,3 +32,64 @@ export const createAccountFailure = message => ({
 export const clearCreateAccount = () => ({
   type: UserTypes.CLEAR_CREATE_ACCOUNT,
 })
+
+// get all user
+export const getAllUser = () => ({
+  type: UserTypes.GET_ALL_USER,
+})
+
+export const getAllUserSuccess = ({ data }) => ({
+  type: UserTypes.GET_ALL_USER_SUCCESS,
+  payload: { data },
+})
+
+export const getAllUserFailure = message => ({
+  type: UserTypes.GET_ALL_USER_FAILURE,
+  payload: { message },
+})
+
+// get all student
+export const getAllStudent = () => ({
+  type: UserTypes.GET_ALL_STUDENT,
+})
+
+export const getAllStudentSuccess = ({ data }) => ({
+  type: UserTypes.GET_ALL_STUDENT_SUCCESS,
+  payload: { data },
+})
+
+export const getAllStudentFailure = message => ({
+  type: UserTypes.GET_ALL_STUDENT_FAILURE,
+  payload: { message },
+})
+
+// get all teacher
+export const getAllTeacher = () => ({
+  type: UserTypes.GET_ALL_TEACHER,
+})
+
+export const getAllTeacherSuccess = ({ data }) => ({
+  type: UserTypes.GET_ALL_TEACHER_SUCCESS,
+  payload: { data },
+})
+
+export const getAllTeacherFailure = message => ({
+  type: UserTypes.GET_ALL_TEACHER_FAILURE,
+  payload: { message },
+})
+
+// get information of user
+export const getInforUser = id => ({
+  type: UserTypes.GET_INFOR_USER,
+  payload: { id },
+})
+
+export const getInforUserSuccess = ({ data }) => ({
+  type: UserTypes.GET_INFOR_USER_SUCCESS,
+  payload: { data },
+})
+
+export const getInforUserFailure = message => ({
+  type: UserTypes.GET_INFOR_USER_FAILURE,
+  payload: { message },
+})

@@ -6,6 +6,7 @@ $color-7: #d48806;
 $color-8: #ad6800;
 $color-9: #874d00;
 $color-10: #613400;
+$color-11: #f5222d;
 
 $font-size-large: 2rem;
 
@@ -39,7 +40,15 @@ input {
     border: 1px solid $color-main !important;
   }
 }
-
+.ant-select-selection {
+  &:hover {
+    border: 1px solid $color-main !important;
+  }
+  &:focus {
+    box-shadow: 0 0 0 2px #faad1446 !important;
+    border: 1px solid $color-main !important;
+  }
+}
 .message {
   text-align: center;
   &--error{
@@ -48,4 +57,29 @@ input {
   &--success {
     color: #31c754;
   }
+}
+// tab panel
+.ant-tabs-tab {
+  &:hover{
+    color: $color-main !important;
+  }
+}
+.ant-tabs-tab-active{
+  color: $color-main !important;
+}
+
+.ant-tabs-ink-bar {
+  background-color:  $color-main;
+}
+
+// slide bar
+.makeStyles-blue-23 {
+  background-color: $color-main !important;
+  box-shadow:
+   0 12px 20px -10px #fffbe6,
+   0 4px 20px 0 #fff1b8,
+}
+
+.ant-btn-danger {
+  background-color: $color-11 !important;
 }

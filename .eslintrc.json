@@ -22,7 +22,8 @@
     "singleQuote": true,
     "printWidth": 100
     }
-    ]
+    ],
+    "react-hooks/exhaustive-deps": "off"
     },
-    "plugins": ["prettier"]
+    "plugins": ["prettier", "react-hooks"]
 }

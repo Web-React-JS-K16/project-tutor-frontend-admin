@@ -1,0 +1,43 @@
+@import '../../common/common.style.scss';
+
+.tags {
+  &__button {
+    margin-bottom: 30px;
+  }
+
+  &__table {
+    .link {
+      transition: 0.2s;
+      background-color: transparent !important;
+
+      &__edit {
+        color: $color-7 !important;
+      }
+
+      &__delete {
+        color: $color-11 !important;
+      }
+
+      &:hover {
+        font-size: 1.4rem;
+
+        span {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+}
+
+.ant-modal-confirm {
+  .ant-modal-confirm-btns {
+    .ant-btn-link {
+      background-color: transparent !important;
+      color: $color-main;
+
+      span {
+        text-decoration: underline;
+      }
+    }
+  }
+}
