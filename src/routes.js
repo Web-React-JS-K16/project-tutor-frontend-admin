@@ -24,9 +24,9 @@ import EqualizerIcon from '@material-ui/icons/Equalizer'
 import SupervisorAccountIcon from '@material-ui/icons/SupervisorAccount'
 import CreateAdminContainer from './components/CreateAdmin/CreateAdmin.container'
 import AccountAdminPage from './view/AccountAdminPage/AccountAdminPage.component'
-import ManagerAccountUserContainer from './components/ManagerAccountUser/ManagerAccountUser.container'
-import DetailInformationUserContainer from './components/DetailInformationUser/DetailInformationUser.container'
-import ManagerTagSkillContainer from './components/ManagerTagSkill/ManagerTagSkill.container'
+import ManagerAccountUserContainer from './view/ManagerAccountUser/ManagerAccountUser.container'
+import DetailInformationUserContainer from './view/DetailInformationUser/DetailInformationUser.container'
+import ManagerTagSkillContainer from './view/ManagerTagSkill/ManagerTagSkill.container'
 
 const dashboardRoutes = [
   {
