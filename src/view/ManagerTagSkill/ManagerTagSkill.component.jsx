@@ -4,7 +4,7 @@ import './ManagerTagSkill.scss'
 
 import React, { useEffect, useState } from 'react'
 import { Table, Tag, Divider, Button, Modal } from 'antd'
-import ModelSKill from '../ModalSkill/ModalSkill.component'
+import ModalSkill from '../../components/ModalSkill/ModalSkill.component'
 
 const { confirm } = Modal
 
@@ -120,7 +120,7 @@ const ManagerTagSkill = ({
       {data ? (
         <Table columns={columns} dataSource={data} className="tags__table" loading={loadingData} />
       ) : null}
-      <ModelSKill
+      <ModalSkill
         showModal={showModal}
         loading={loading}
         visible={visible}
@@ -129,7 +129,7 @@ const ManagerTagSkill = ({
         options={dataMajor}
         title="Tạo tag kĩ năng"
       />
-      <ModelSKill
+      <ModalSkill
         showModal={showModalEdit}
         loading={loadingEdit}
         visible={visibleEdit}

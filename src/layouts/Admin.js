@@ -19,7 +19,7 @@ import styles from '../assets/jss/material-dashboard-react/layouts/adminStyle'
 import bgImage from '../assets/img/sidebar-2.jpg'
 import logo from '../assets/img/reactlogo.png'
 // eslint-disable-next-line import/no-named-as-default
-import DetailInformationUser from '../components/DetailInformationUser/DetailInformationUser.component'
+import DetailInformationUser from '../view/DetailInformationUser/DetailInformationUser.component'
 
 let ps
 
