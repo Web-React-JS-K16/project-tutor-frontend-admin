@@ -40,7 +40,15 @@ input {
     border: 1px solid $color-main !important;
   }
 }
-
+.ant-select-selection {
+  &:hover {
+    border: 1px solid $color-main !important;
+  }
+  &:focus {
+    box-shadow: 0 0 0 2px #faad1446 !important;
+    border: 1px solid $color-main !important;
+  }
+}
 .message {
   text-align: center;
   &--error{
@@ -72,3 +80,6 @@ input {
    0 4px 20px 0 #fff1b8,
 }
 
+.ant-btn-danger {
+  background-color: $color-11 !important;
+}

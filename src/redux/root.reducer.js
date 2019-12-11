@@ -2,6 +2,8 @@ import { combineReducers } from 'redux'
 import { persistReducer } from 'redux-persist'
 import storage from 'redux-persist/lib/storage'
 import userReducer from './user/user.reducers'
+import tagReducers from './tag/tag.reducers'
+import majorReducers from './major/major.reducers'
 
 const userPersistConfig = {
   key: 'user',
@@ -13,6 +15,8 @@ const userPersistConfig = {
 
 const rootReducer = combineReducers({
   user: persistReducer(userPersistConfig, userReducer),
+  tag: tagReducers,
+  major: majorReducers,
 })
 
 export default rootReducer

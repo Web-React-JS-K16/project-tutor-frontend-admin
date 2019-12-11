@@ -1,0 +1,18 @@
+@import '../../common/common.style.scss';
+
+.ant-modal-content {
+  .ant-modal-close {
+    background-color: transparent !important;
+  }
+
+  .ant-modal-footer {
+    .ant-btn-link {
+      background-color: transparent !important;
+      color: $color-main;
+
+      span {
+        text-decoration: underline;
+      }
+    }
+  }
+}

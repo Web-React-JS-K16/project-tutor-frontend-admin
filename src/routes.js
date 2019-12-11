@@ -26,6 +26,7 @@ import CreateAdminContainer from './components/CreateAdmin/CreateAdmin.container
 import AccountAdminPage from './view/AccountAdminPage/AccountAdminPage.component'
 import ManagerAccountUserContainer from './components/ManagerAccountUser/ManagerAccountUser.container'
 import DetailInformationUserContainer from './components/DetailInformationUser/DetailInformationUser.container'
+import ManagerTagSkillContainer from './components/ManagerTagSkill/ManagerTagSkill.container'
 
 const dashboardRoutes = [
   {
@@ -50,7 +51,7 @@ const dashboardRoutes = [
     path: '/skill',
     name: 'Tag kỹ năng',
     rtlName: 'لوحة القيادة',
-    component: CreateAdminContainer,
+    component: ManagerTagSkillContainer,
     layout: '/admin',
   },
   {

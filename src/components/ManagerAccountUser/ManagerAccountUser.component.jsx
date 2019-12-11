@@ -89,17 +89,21 @@ const ManagerAccountUser = ({
   return (
     <>
       {messageInfoSt || messageInfoTc ? (
-        <Alert
-          message="Oops"
-          description="Có lỗi trong quá trình xảy ra. Vui lòng thử lại"
-          type="error"
+        <div
           style={{
-            width: '240px',
-            margin: '30px',
-            marginLeft: 'auto',
-            marginRight: 'auto',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            flexDirection: 'row',
+            height: '80vh',
           }}
-        />
+        >
+          <Alert
+            message="Oops"
+            description="Có lỗi trong quá trình xảy ra. Vui lòng thử lại"
+            type="error"
+          />
+        </div>
       ) : (
         <Tabs type="card">
           <TabPane tab="Tài khoản giáo viên" key="1">
