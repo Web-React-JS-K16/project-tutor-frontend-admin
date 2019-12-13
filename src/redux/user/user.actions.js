@@ -95,3 +95,18 @@ export const getInforUserFailure = message => ({
   type: UserTypes.GET_INFOR_USER_FAILURE,
   payload: { message },
 })
+
+export const blockUnBlockAccount = data => ({
+  type: UserTypes.BLOCK_UNBLOCK_ACCOUNT,
+  payload: { data },
+})
+
+export const blockUnBlockAccountSuccess = ({ data, message }) => ({
+  type: UserTypes.BLOCK_UNBLOCK_ACCOUNT_SUCCESS,
+  payload: { data, message },
+})
+
+export const blockUnlockAccountFailure = message => ({
+  type: UserTypes.BLOCK_UNBLOCK_ACCOUNT_FAILURE,
+  payload: { message },
+})

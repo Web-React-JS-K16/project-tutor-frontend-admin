@@ -5,7 +5,6 @@ import './ManagerAccountUser.scss'
 import React, { useEffect, useState } from 'react'
 import * as moment from 'moment'
 import { Table, Tag, Tabs, Avatar, Alert } from 'antd'
-import { Link } from 'react-router-dom'
 import CustomPagination from '../../components/Pagination/Pagination.component'
 
 const { TabPane } = Tabs
@@ -77,18 +76,22 @@ const columnsTeacher = [
       </span>
     ),
   },
-  {
-    title: '',
-    dataIndex: 'isBlock',
-    key: 'isBlock',
-    width: 80,
-    render: (_id, row) => (
-      <Link to="/" className={row.userId.isBlock ? 'unblock' : 'block'}>
-        <span>{row.userId.isBlock ? 'Mở khóa' : 'Khóa'}</span>
-      </Link>
-    ),
-  },
+  // {
+  //   title: '',
+  //   dataIndex: 'isBlock',
+  //   key: 'isBlock',
+  //   width: 80,
+  //   render: (_id, row) => (
+  //     <Button
+  //       onClick={() => showConfirm(row)}
+  //       className={row.userId.isBlock ? 'unblock' : 'block'}
+  //     >
+  //       <span>{row.userId.isBlock ? 'Mở khóa' : 'Khóa'}</span>
+  //     </Button>
+  //   ),
+  // },
 ]
+
 const columnsStudent = [
   {
     title: 'Tên hiển thị',
@@ -144,17 +147,23 @@ const columnsStudent = [
       </span>
     ),
   },
-  {
-    title: '',
-    dataIndex: 'isBlock',
-    key: 'isBlock',
-    width: 80,
-    render: (_id, row) => (
-      <Link to="/" className={row.userId.isBlock ? 'unblock' : 'block'}>
-        <span>{row.userId.isBlock ? 'Mở khóa' : 'Khóa'}</span>
-      </Link>
-    ),
-  },
+  // {
+  //   title: '',
+  //   dataIndex: 'isBlock',
+  //   key: 'isBlock',
+  //   width: 80,
+  //   render: (_id, row) => (
+  //     <Button
+  //       onClick={() => showConfirm(row)}
+  //       className={row.userId.isBlock ? 'unblock' : 'block'}
+  //     >
+  //       <span>{row.userId.isBlock ? 'Mở khóa' : 'Khóa'}</span>
+  //     </Button>
+  //     // <Link to="/" className={row.userId.isBlock ? 'unblock' : 'block'}>
+  //     //   <span>{row.userId.isBlock ? 'Mở khóa' : 'Khóa'}</span>
+  //     // </Link>
+  //   ),
+  // },
 ]
 
 // eslint-disable-next-line react/prop-types
@@ -189,6 +198,7 @@ const ManagerAccountUser = ({
     setCurrentPageSt(page)
     getAllStudent({ limit: pageSize, offset: page })
   }
+
   return (
     <>
       {messageInfoSt || messageInfoTc ? (
@@ -214,9 +224,11 @@ const ManagerAccountUser = ({
               rowKey={record => record._id}
               columns={columnsTeacher}
               dataSource={teachers}
-              onRow={r => ({
-                onClick: () => history.push(`${history.location.pathname}/${r.userId._id}`),
-              })}
+              onRow={r => {
+                return {
+                  onClick: () => history.push(`${history.location.pathname}/${r.userId._id}`),
+                }
+              }}
               className="table-account"
               loading={loadingTc}
               pagination={false}

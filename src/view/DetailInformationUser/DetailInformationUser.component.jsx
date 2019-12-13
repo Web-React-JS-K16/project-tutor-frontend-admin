@@ -6,10 +6,30 @@
 import './DetailInformationUser.scss'
 
 import React, { useEffect } from 'react'
-import { PageHeader, Descriptions, Avatar, Tag, Alert, Button, Rate, Progress, Spin } from 'antd'
+import {
+  PageHeader,
+  Descriptions,
+  Avatar,
+  Tag,
+  Alert,
+  Button,
+  Rate,
+  Progress,
+  Spin,
+  Modal,
+} from 'antd'
 import * as moment from 'moment'
 
-export const DetailInformationUser = ({ user, messageInfo, loading, history, getInforUser }) => {
+const { confirm } = Modal
+
+export const DetailInformationUser = ({
+  user,
+  errorInfo,
+  loading,
+  history,
+  getInforUser,
+  blockUnblockAccount,
+}) => {
   useEffect(() => {
     const {
       location: { pathname },
@@ -21,6 +41,26 @@ export const DetailInformationUser = ({ user, messageInfo, loading, history, get
     getInforUser(id)
   }, [getInforUser])
 
+  const handleblockAccount = (_id, type) => {
+    blockUnblockAccount({ _id, type })
+  }
+
+  const showConfirm = data => {
+    confirm({
+      title: `Bạn có muốn ${data.isBlock ? 'mở khóa' : 'khóa'} tài khoản này?`,
+      okText: 'Có',
+      okType: 'primary',
+      cancelText: 'Hủy',
+      cancelButtonProps: {
+        type: 'link',
+      },
+      onOk() {
+        handleblockAccount(data._id, data.isBlock)
+      },
+      onCancel() {},
+    })
+  }
+
   return (
     <PageHeader ghost={false} onBack={() => history.go(-1)} title="Thông tin chi tiết người dùng">
       {loading ? (
@@ -31,7 +71,7 @@ export const DetailInformationUser = ({ user, messageInfo, loading, history, get
         >
           <Spin size="large" />
         </div>
-      ) : messageInfo ? (
+      ) : errorInfo ? (
         <Alert
           message="Oops"
           description="Có lỗi trong quá trình xảy ra. Vui lòng thử lại"
@@ -50,7 +90,7 @@ export const DetailInformationUser = ({ user, messageInfo, loading, history, get
               <div className="ant-page-header-content__ava">
                 <Avatar size={64} src={user.userId.avatar} />
                 <div className="ant-page-header-content__ava--text">
-                  <p>Nguyễn Văn A</p>
+                  <p>{user.userId.displayName}</p>
                   <Tag color={user.userId.isActive ? 'green' : 'red'}>
                     {user.userId.isActive ? 'Đã xác thực' : 'Chưa xác thực'}{' '}
                   </Tag>
@@ -106,7 +146,9 @@ export const DetailInformationUser = ({ user, messageInfo, loading, history, get
                         description="Tài khoản này đã bị khóa? Bạn có muốn mở khóa tài khoản."
                         type="error"
                       />
-                      <Button type="primary">Mở khóa</Button>
+                      <Button type="primary" onClick={() => showConfirm(user.userId)}>
+                        Mở khóa
+                      </Button>
                     </>
                   ) : (
                     <>
@@ -115,7 +157,9 @@ export const DetailInformationUser = ({ user, messageInfo, loading, history, get
                         description="Bạn có muốn khóa tài khoản này?"
                         type="error"
                       />
-                      <Button type="primary">Khóa</Button>
+                      <Button type="primary" onClick={() => showConfirm(user.userId)}>
+                        Khóa
+                      </Button>
                     </>
                   )}
                 </div>

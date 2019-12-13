@@ -1,5 +1,7 @@
+/* eslint-disable no-undef */
 /* eslint-disable no-underscore-dangle */
 import { call, all, takeLatest, put } from 'redux-saga/effects'
+import { message } from 'antd'
 import UserTypes from './user.types'
 import {
   loginSuccess,
@@ -14,6 +16,8 @@ import {
   getAllTeacherSuccess,
   getInforUserSuccess,
   getInforUserFailure,
+  blockUnBlockAccountSuccess,
+  blockUnlockAccountFailure,
 } from './user.actions'
 import UserService from '../../services/user.service'
 
@@ -102,6 +106,23 @@ function* getInforUserSaga() {
   yield takeLatest(UserTypes.GET_INFOR_USER, getInforUser)
 }
 
+// Get all teacher
+function* blockUnblockAccount(action) {
+  try {
+    const { _id, type } = action.payload.data
+    const data = yield UserService.blockUnBlockAccount(_id, type)
+    message.success(data.message)
+    yield put(blockUnBlockAccountSuccess(data))
+  } catch (err) {
+    message.error(err.message)
+    yield put(blockUnlockAccountFailure(err.message))
+  }
+}
+
+function* blockUnblockAccountSaga() {
+  yield takeLatest(UserTypes.BLOCK_UNBLOCK_ACCOUNT, blockUnblockAccount)
+}
+
 // =====
 export default function* userSaga() {
   yield all([
@@ -111,5 +132,6 @@ export default function* userSaga() {
     call(getAllStudentSaga),
     call(getAllTeacherSaga),
     call(getInforUserSaga),
+    call(blockUnblockAccountSaga),
   ])
 }

@@ -1,3 +1,5 @@
+/* eslint-disable no-case-declarations */
+/* eslint-disable no-underscore-dangle */
 import UserTypes from './user.types'
 
 const INITIAL_STATE = {
@@ -32,7 +34,7 @@ const INITIAL_STATE = {
   getInforUser: {
     data: null,
     isLoading: false,
-    message: null,
+    err: null,
   },
 }
 
@@ -176,6 +178,7 @@ const userReducer = (state = INITIAL_STATE, action) => {
       }
     // get information user
     case UserTypes.GET_INFOR_USER:
+    case UserTypes.BLOCK_UNBLOCK_ACCOUNT:
       return {
         ...state,
         getInforUser: {
@@ -191,12 +194,21 @@ const userReducer = (state = INITIAL_STATE, action) => {
         },
       }
     case UserTypes.GET_INFOR_USER_FAILURE:
-      console.log(action.payload.message)
+    case UserTypes.BLOCK_UNBLOCK_ACCOUNT_FAILURE:
       return {
         ...state,
         getInforUser: {
           isLoading: false,
-          message: action.payload.message,
+          err: action.payload.message,
+        },
+      }
+    case UserTypes.BLOCK_UNBLOCK_ACCOUNT_SUCCESS:
+      const { userId } = action.payload.data
+      return {
+        ...state,
+        getInforUser: {
+          isLoading: false,
+          data: { ...state.getInforUser.data, userId },
         },
       }
     default:
