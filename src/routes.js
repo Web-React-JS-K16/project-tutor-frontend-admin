@@ -27,6 +27,11 @@ import AccountAdminPage from './view/AccountAdminPage/AccountAdminPage.component
 import ManagerAccountUserContainer from './view/ManagerAccountUser/ManagerAccountUser.container'
 import DetailInformationUserContainer from './view/DetailInformationUser/DetailInformationUser.container'
 import ManagerTagSkillContainer from './view/ManagerTagSkill/ManagerTagSkill.container'
+import ManagerContractContainer from './view/ManagerContract/ManagerContract.container'
+import DetailContractPageContainer from './view/DetailContractPage/DetailContractPage.container'
+import ManagerReportContainer from './view/ManagerReport/ManagerReport.container'
+import DetailContractReportContainer from './view/DetailContractReport/DetailContractReport.container'
+import StatisticPage from './view/StatisticPage/StatisticPage.container'
 
 const dashboardRoutes = [
   {
@@ -55,36 +60,43 @@ const dashboardRoutes = [
     layout: '/admin',
   },
   {
+    path: '/contract/:id',
+    name: 'Hợp đồng',
+    rtlName: 'لوحة القيادة',
+    component: DetailContractPageContainer,
+    layout: '/admin',
+  },
+  {
     path: '/contract',
     name: 'Hợp đồng',
     rtlName: 'لوحة القيادة',
-    component: CreateAdminContainer,
+    component: ManagerContractContainer,
+    layout: '/admin',
+  },
+  {
+    path: '/report/:id',
+    name: 'Khiếu nại, tố cáo',
+    rtlName: 'لوحة القيادة',
+    component: DetailContractReportContainer,
     layout: '/admin',
   },
   {
     path: '/report',
     name: 'Khiếu nại, tố cáo',
     rtlName: 'لوحة القيادة',
-    component: CreateAdminContainer,
+    component: ManagerReportContainer,
     layout: '/admin',
   },
   {
     path: '/statistic',
     name: 'Thống kê',
     rtlName: 'لوحة القيادة',
-    component: CreateAdminContainer,
+    component: StatisticPage,
     layout: '/admin',
   },
 ]
 
 const navBarRoutes = [
-  {
-    path: '/account/admin',
-    name: 'Tài khoản admin',
-    icon: Person,
-    component: AccountAdminPage,
-    layout: '/admin',
-  },
   {
     path: '/account/user',
     name: 'Tài khoản người dùng',
@@ -113,7 +125,7 @@ const navBarRoutes = [
     name: 'Khiếu nại, tố cáo',
     rtlName: 'لوحة القيادة',
     icon: ChatIcon,
-    component: CreateAdminContainer,
+    component: ManagerReportContainer,
     layout: '/admin',
   },
   {
@@ -121,7 +133,14 @@ const navBarRoutes = [
     name: 'Thống kê',
     rtlName: 'لوحة القيادة',
     icon: EqualizerIcon,
-    component: CreateAdminContainer,
+    component: StatisticPage,
+    layout: '/admin',
+  },
+  {
+    path: '/account/admin',
+    name: 'Tài khoản admin',
+    icon: Person,
+    component: AccountAdminPage,
     layout: '/admin',
   },
 ]

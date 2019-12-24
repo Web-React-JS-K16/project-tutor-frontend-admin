@@ -33,7 +33,7 @@ const ManagerTagSkill = ({
   useEffect(() => {
     getAllMajor()
     getAllTag({ limit: pageSize, page: 1 })
-  }, [getAllTag, getAllMajor])
+  }, [getAllTag, getAllMajor, pageSize])
 
   const showModal = () => {
     setVisible(true)

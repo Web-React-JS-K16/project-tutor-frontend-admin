@@ -9,6 +9,8 @@
     "parser": "babel-eslint",
     "rules": {
     "import/no-unresolved": "off",
+    "react-hooks/exhaustive-deps": "off",
+    "react-hooks/rules-of-hooks": "error",
     "react/jsx-filename-extension": [
     1,
     {
@@ -22,8 +24,7 @@
     "singleQuote": true,
     "printWidth": 100
     }
-    ],
-    "react-hooks/exhaustive-deps": "off"
+    ]
     },
     "plugins": ["prettier", "react-hooks"]
 }

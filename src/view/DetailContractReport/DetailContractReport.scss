@@ -1,0 +1,55 @@
+.report {
+  box-shadow: 0 12px 20px -10px #fffbe6, 0 4px 20px 0 #fff1b8;
+  border: 1px solid darken(#faad14, 1%);
+  border-radius: 4px;
+  padding: 10px 50px;
+  margin: 0 30px;
+  
+  .ant-steps {
+    flex-wrap: wrap;
+    .ant-steps-item {
+      min-width: 250px;
+      margin-top: 15px;
+    }
+  }
+
+  &__group-btn {
+    display: flex;
+    justify-content: space-evenly;
+
+    .btn {
+      margin: 10px 0;
+      color: #ffffff;
+      transition: all 0.2s;
+
+      &:hover {
+        transform: scale(1.05);
+        box-shadow: 0 12px 20px -10px #fffbe6, 0 4px 20px 0 #fff1b8;
+      }
+    }
+
+    .btn-cancal-contract {
+      background: #d48806 !important;
+    }
+  }
+}
+
+.content {
+  display: flex;
+  margin: 0 30px;
+  width: 100%;
+
+  &__report {
+    box-shadow: 0 12px 20px -10px #fffbe6, 0 4px 20px 0 #fff1b8;
+    border: 1px solid darken(#faad14, 1%);
+    border-radius: 4px;
+
+    &--contract {
+      width: 60%;
+    }
+
+    &--message {
+      width: calc(40% - 80px);
+    }
+  }
+}

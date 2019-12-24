@@ -1,5 +1,6 @@
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable react/prop-types */
+// eslint-disable-line react-hooks/exhaustive-deps
 import './ManagerAccountUser.scss'
 
 import React, { useEffect, useState } from 'react'
@@ -58,7 +59,7 @@ const columnsTeacher = [
     key: 'birthday',
     dataIndex: 'birthday',
     width: 120,
-    render: (_id, row) => <span>{moment(row.userId.birthdate).format('L')}</span>,
+    render: (_id, row) => <span>{moment(row.userId.birthdate).format('DD/MM/YYYY')}</span>,
   },
   {
     title: 'Trạng thái',
@@ -76,20 +77,6 @@ const columnsTeacher = [
       </span>
     ),
   },
-  // {
-  //   title: '',
-  //   dataIndex: 'isBlock',
-  //   key: 'isBlock',
-  //   width: 80,
-  //   render: (_id, row) => (
-  //     <Button
-  //       onClick={() => showConfirm(row)}
-  //       className={row.userId.isBlock ? 'unblock' : 'block'}
-  //     >
-  //       <span>{row.userId.isBlock ? 'Mở khóa' : 'Khóa'}</span>
-  //     </Button>
-  //   ),
-  // },
 ]
 
 const columnsStudent = [
@@ -129,7 +116,7 @@ const columnsStudent = [
     key: 'birthday',
     dataIndex: 'birthday',
     width: 120,
-    render: (_id, row) => <span>{moment(row.userId.birthdate).format('L')}</span>,
+    render: (_id, row) => <span>{moment(row.userId.birthdate).format('DD/MM/YYYY')}</span>,
   },
   {
     title: 'Trạng thái',
@@ -147,23 +134,6 @@ const columnsStudent = [
       </span>
     ),
   },
-  // {
-  //   title: '',
-  //   dataIndex: 'isBlock',
-  //   key: 'isBlock',
-  //   width: 80,
-  //   render: (_id, row) => (
-  //     <Button
-  //       onClick={() => showConfirm(row)}
-  //       className={row.userId.isBlock ? 'unblock' : 'block'}
-  //     >
-  //       <span>{row.userId.isBlock ? 'Mở khóa' : 'Khóa'}</span>
-  //     </Button>
-  //     // <Link to="/" className={row.userId.isBlock ? 'unblock' : 'block'}>
-  //     //   <span>{row.userId.isBlock ? 'Mở khóa' : 'Khóa'}</span>
-  //     // </Link>
-  //   ),
-  // },
 ]
 
 // eslint-disable-next-line react/prop-types
@@ -187,7 +157,7 @@ const ManagerAccountUser = ({
   useEffect(() => {
     getAllStudent({ limit: pageSize, offset: currentPageSt })
     getAllTeacher({ limit: pageSize, offset: currentPageTc })
-  }, [getAllStudent, getAllTeacher])
+  }, [getAllStudent, getAllTeacher, currentPageSt, currentPageTc, pageSize])
 
   const onChangeTableTeacher = page => {
     setCurrentPageTc(page)
