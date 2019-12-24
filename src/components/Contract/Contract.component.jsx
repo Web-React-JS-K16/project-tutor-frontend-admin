@@ -4,6 +4,7 @@
 import React from 'react'
 import { Timeline, Descriptions, Tag, Divider, Icon, Avatar } from 'antd'
 import * as moment from 'moment'
+import NumberFormat from 'react-number-format'
 import EContractType from '../../enum/EContractType'
 
 export const ContractComponent = ({ contract }) => (
@@ -17,12 +18,18 @@ export const ContractComponent = ({ contract }) => (
         <Descriptions.Item label="Ngày bắt đầu">
           {moment(contract.startDate).format('DD/MM/YYYY HH:MM')}
         </Descriptions.Item>
-        <Descriptions.Item label="Tổng số giờ">{contract.workingHour}</Descriptions.Item>
+        <Descriptions.Item label="Tổng số giờ">{contract.workingHour}&nbsp;h</Descriptions.Item>
         <Descriptions.Item label="Ngày kết thúc">
           {moment(contract.endDate).format('DD/MM/YYYY HH:MM')}
         </Descriptions.Item>
         <Descriptions.Item label="Sô tiền trên một giờ">
-          {contract.costPerHour.$numberDecimal} VND/h
+          <NumberFormat
+            value={contract.costPerHour.$numberDecimal * 1000}
+            displayType="text"
+            thousandSeparator
+            prefix=""
+            renderText={value => <span>{value}&nbsp;VND/h</span>}
+          />
         </Descriptions.Item>
         <Descriptions.Item label="Trạng thái">
           <Tag color={EContractType.color[contract.status]}>

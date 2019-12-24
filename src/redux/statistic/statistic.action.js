@@ -1,7 +1,14 @@
 /* eslint-disable import/prefer-default-export */
-export const getSalesByDate = (data, getSalesByDateSuccess, getSalesByDateFailure) => ({
-  type: 'GET_SALE_BY_DATE',
+export const getSales = (data, getSalesSuccess, getSalesFailure) => ({
+  type: 'GET_SALE',
   data,
-  getSalesByDateSuccess,
-  getSalesByDateFailure,
+  getSalesSuccess,
+  getSalesFailure,
+})
+
+export const getSalesByYear = (data, getSalesSuccess, getSalesFailure) => ({
+  type: 'GET_SALE_BY_YEAR',
+  data,
+  getSalesSuccess,
+  getSalesFailure,
 })

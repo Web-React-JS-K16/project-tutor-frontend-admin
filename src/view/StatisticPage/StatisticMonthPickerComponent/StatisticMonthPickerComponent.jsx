@@ -30,7 +30,6 @@ export const StatisticMonthPickerComponent = props => {
       />
       <MonthPicker
         disabledDate={disabledEndDate}
-        ư
         value={endValue}
         placeholder="Tháng kết thúc"
         onChange={onEndChange}

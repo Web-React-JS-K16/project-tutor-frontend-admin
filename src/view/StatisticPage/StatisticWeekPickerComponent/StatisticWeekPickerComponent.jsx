@@ -28,7 +28,6 @@ export const StatisticWeekPickerComponent = props => {
       />
       <WeekPicker
         disabledDate={disabledEndDate}
-        ư
         value={endValue}
         placeholder="Tuần kết thúc"
         onChange={onEndChange}

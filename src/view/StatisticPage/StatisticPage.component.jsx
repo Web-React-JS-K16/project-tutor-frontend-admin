@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-expressions */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable react/prop-types */
 /* eslint-disable react/no-deprecated */
@@ -7,50 +8,43 @@ import './StatisticPage.component.scss'
 
 import React, { Component } from 'react'
 import { Bar } from 'react-chartjs-2'
-import { Select, message } from 'antd'
+import { Select, message, Button } from 'antd'
 import * as moment from 'moment'
 import { StatisticDatePickerComponent } from './StatisticDatePickerComponent/StatisticDatePickerComponent.component'
 import { StatisticWeekPickerComponent } from './StatisticWeekPickerComponent/StatisticWeekPickerComponent'
 import { StatisticMonthPickerComponent } from './StatisticMonthPickerComponent/StatisticMonthPickerComponent'
 import { StatisticYearPickerComponent } from './StatisticYearPickerComponent/StatisticYearPickerComponent'
+import EStatisticType from '../../enum/EStatisticType'
 
 const { Option } = Select
-const options = {
-  scales: {
-    yAxes: [
-      {
-        ticks: {
-          beginAtZero: true,
-        },
-        scaleLabel: {
-          display: true,
-          labelString: 'Doanh thu (triệu VND)',
-        },
-      },
-    ],
-  },
-}
 
 export class StatisticPage extends Component {
   state = {
-    fromDate: moment('1/1/2019'),
-    endDate: moment('12/30/2020'),
+    fromDate: moment('1/1/2017'),
+    endDate: moment('11/30/2019'),
+    fromYear: 2017,
+    endYear: 2019,
     endOpen: false,
     mode: 'date',
     data: [],
   }
 
   componentWillMount = () => {
-    const { getSalesByDate } = this.props
-    const { fromDate, endDate } = this.state
-    getSalesByDate({ fromDate, endDate }, this.getSalesByDateSuccess, this.getSalesByDateFailure)
+    const { getSales } = this.props
+    const { fromDate, endDate, mode } = this.state
+    getSales(
+      { fromDate, endDate, type: EStatisticType[mode] },
+      this.getSalesSuccess,
+      this.getSalesFailure
+    )
   }
 
-  getSalesByDateSuccess = ({ data }) => {
+  getSalesSuccess = ({ data }) => {
     this.setState({ data })
   }
 
-  getSalesByDateFailure = _message => {
+  getSalesFailure = _message => {
+    this.setState({ data: [] })
     message.error(_message)
   }
 
@@ -84,6 +78,14 @@ export class StatisticPage extends Component {
     this.onChange('endDate', value)
   }
 
+  onStartChangeYear = value => {
+    this.onChange('fromYear', value)
+  }
+
+  onEndChangeYear = value => {
+    this.onChange('endYear', value)
+  }
+
   handleStartOpenChange = open => {
     if (!open) {
       this.setState({ endOpen: true })
@@ -96,10 +98,30 @@ export class StatisticPage extends Component {
 
   handleChange = mode => {
     this.setState({ mode })
+    const { getSales } = this.props
+    const { fromDate, endDate } = this.state
+    getSales(
+      { fromDate, endDate, type: EStatisticType[mode] },
+      this.getSalesSuccess,
+      this.getSalesFailure
+    )
+  }
+
+  handleClickButton = () => {
+    const { getSales, getSalesByYear } = this.props
+    const { fromDate, endDate, fromYear, endYear, mode } = this.state
+
+    mode === 'year'
+      ? getSalesByYear({ fromYear, endYear }, this.getSalesSuccess, this.getSalesFailure)
+      : getSales(
+          { fromDate, endDate, type: EStatisticType[mode] },
+          this.getSalesSuccess,
+          this.getSalesFailure
+        )
   }
 
   render() {
-    const { mode, fromDate, endDate, endOpen, data } = this.state
+    const { mode, fromDate, endDate, fromYear, endYear, endOpen, data } = this.state
     const dataMode = {
       date: {
         component: (
@@ -118,6 +140,8 @@ export class StatisticPage extends Component {
         label: 'Biểu đồ doanh thu theo ngày',
         backgroundColor: 'rgba(165,223,223,.3)',
         borderColor: 'rgb(75, 192, 192)',
+        format: 'DD-MM-YYYY',
+        labelString: 'Ngày',
       },
       week: {
         component: (
@@ -136,6 +160,7 @@ export class StatisticPage extends Component {
         label: 'Biểu đồ doanh thu theo tuần',
         backgroundColor: 'rgba(255,177,193,.3)',
         borderColor: 'rgb(255,99,132)',
+        labelString: 'Tuần thứ',
       },
       month: {
         component: (
@@ -154,29 +179,55 @@ export class StatisticPage extends Component {
         label: 'Biểu đồ doanh thu theo tháng',
         backgroundColor: 'rgba(255,230,170,.3)',
         borderColor: 'rgb(255,205,86)',
+        format: 'MM-YYYY',
+        labelString: 'Tháng',
       },
       year: {
         component: (
           <StatisticYearPickerComponent
-            startValue={fromDate}
-            endValue={endDate}
-            endOpen={endOpen}
-            disabledStartDate={this.disabledStartDate}
-            onStartChange={this.onStartChange}
-            handleStartOpenChange={this.handleStartOpenChange}
-            disabledEndDate={this.disabledEndDate}
-            onEndChange={this.onEndChange}
-            handleEndOpenChange={this.handleEndOpenChange}
+            startValue={fromYear}
+            endValue={endYear}
+            onStartChange={this.onStartChangeYear}
+            onEndChange={this.onEndChangeYear}
           />
         ),
         label: 'Biểu đồ doanh thu theo năm',
-        backgroundColor: 'rgba(204,178,255,.3)',
-        borderColor: 'rgb(161,113,255)',
+        backgroundColor: 'rgba(82, 196, 26,.3)',
+        borderColor: 'rgb(82, 196, 26)',
+        format: 'YYYY',
+        labelString: 'Năm',
       },
     }
-
+    const options = {
+      scales: {
+        yAxes: [
+          {
+            ticks: {
+              beginAtZero: true,
+            },
+            scaleLabel: {
+              display: true,
+              labelString: 'Doanh thu (triệu VND)',
+            },
+          },
+        ],
+        xAxes: [
+          {
+            ticks: {
+              beginAtZero: true,
+            },
+            scaleLabel: {
+              display: true,
+              labelString: dataMode[mode].labelString,
+            },
+          },
+        ],
+      },
+    }
     const dataChart = {
-      labels: data.map(item => item._id),
+      labels: data.map(item =>
+        mode !== 'week' ? moment(item._id).format(dataMode[mode].format) : item._id
+      ),
       datasets: [
         {
           label: dataMode[mode].label,
@@ -198,7 +249,10 @@ export class StatisticPage extends Component {
               <Option value="month">Theo tháng</Option>
               <Option value="year">Theo năm</Option>
             </Select>
-            <div className="statistic__header--picker">{dataMode[mode].component}</div>
+            <div className="statistic__header--picker">
+              {dataMode[mode].component}
+              <Button onClick={this.handleClickButton}>Xem kết quả</Button>
+            </div>
           </div>
         </div>
         <Bar data={dataChart} options={options} />

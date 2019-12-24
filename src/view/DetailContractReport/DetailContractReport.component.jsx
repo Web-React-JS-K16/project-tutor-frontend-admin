@@ -132,28 +132,33 @@ export const DetailReport = ({ getDetailReport, getMessage, changeStatusContract
               )}
             </div>
           </div>
-          <div
-            className="report"
-            style={{ marginTop: '20px', marginBottom: '20px', textAlign: 'center' }}
-          >
-            <h3>Hợp đồng này đã bị khiếu nại, bạn có thể chọn một trong hai lựa chọn sau: </h3>
-            <div className="report__group-btn">
-              <Button
-                className="btn btn-complete-contract"
-                onClick={handleChangeStatusComplete}
-                disabled={report.contract.status === 5 || report.contract.status === 3}
-              >
-                Hoàn tất hợp đồng
-              </Button>
-              <Button
-                className="btn btn-cancal-contract"
-                onClick={handleChangeStatusCancel}
-                disabled={report.contract.status === 3 || report.contract.status === 3}
-              >
-                Hoàn tiền cho người học
-              </Button>
+          {report.contract.status >= 3 ? (
+            <div
+              className="report"
+              style={{ marginTop: '20px', marginBottom: '20px', textAlign: 'center' }}
+            >
+              <h3>
+                Hợp đồng này đã bị khiếu nại hoặc đã bị học sinh hủy, bạn có thể chọn một trong hai
+                lựa chọn sau:{' '}
+              </h3>
+              <div className="report__group-btn">
+                <Button
+                  className="btn btn-complete-contract"
+                  onClick={handleChangeStatusComplete}
+                  disabled={report.contract.status === 5 || report.contract.status === 3}
+                >
+                  Hoàn tất hợp đồng
+                </Button>
+                <Button
+                  className="btn btn-cancal-contract"
+                  onClick={handleChangeStatusCancel}
+                  disabled={report.contract.status === 3 || report.contract.status === 3}
+                >
+                  Hoàn tiền cho người học
+                </Button>
+              </div>
             </div>
-          </div>
+          ) : null}
         </>
       ) : (
         <div style={{ textAlign: 'center' }}>
