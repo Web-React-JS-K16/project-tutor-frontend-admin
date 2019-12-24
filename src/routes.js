@@ -32,6 +32,7 @@ import DetailContractPageContainer from './view/DetailContractPage/DetailContrac
 import ManagerReportContainer from './view/ManagerReport/ManagerReport.container'
 import DetailContractReportContainer from './view/DetailContractReport/DetailContractReport.container'
 import StatisticPage from './view/StatisticPage/StatisticPage.container'
+import SalaryStatisticPageContainer from './view/SalaryStatisticsPage/SalaryStatisticsPage.container'
 
 const dashboardRoutes = [
   {
@@ -94,6 +95,20 @@ const dashboardRoutes = [
     component: StatisticPage,
     layout: '/admin',
   },
+  {
+    path: '/statistic',
+    name: 'Thống kê',
+    rtlName: 'لوحة القيادة',
+    component: StatisticPage,
+    layout: '/admin',
+  },
+  {
+    path: '/salary-statistic',
+    name: 'Top doanh thu người dạy',
+    rtlName: 'لوحة القيادة',
+    component: SalaryStatisticPageContainer,
+    layout: '/admin',
+  },
 ]
 
 const navBarRoutes = [
@@ -134,6 +149,14 @@ const navBarRoutes = [
     rtlName: 'لوحة القيادة',
     icon: EqualizerIcon,
     component: StatisticPage,
+    layout: '/admin',
+  },
+  {
+    path: '/salary-statistic',
+    name: 'Top doanh thu người dạy',
+    rtlName: 'لوحة القيادة',
+    icon: EqualizerIcon,
+    component: SalaryStatisticPageContainer,
     layout: '/admin',
   },
   {

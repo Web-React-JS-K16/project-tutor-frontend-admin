@@ -18,6 +18,7 @@ import {
   Spin,
   Modal,
 } from 'antd'
+import NumberFormat from 'react-number-format'
 import * as moment from 'moment'
 
 const { confirm } = Modal
@@ -128,7 +129,13 @@ export const DetailInformationUser = ({
                   <div className="ant-page-header-content__description">
                     <Descriptions size="large" column={1}>
                       <Descriptions.Item label="Mức lương (VND/h)">
-                        {user.salary.$numberDecimal}
+                        <NumberFormat
+                          value={user.salary.$numberDecimal * 1000}
+                          displayType="text"
+                          thousandSeparator
+                          prefix=""
+                          renderText={value => <span>{value}</span>}
+                        />
                       </Descriptions.Item>
                       <Descriptions.Item label="Công việc đã làm">{user.jobs}</Descriptions.Item>
                       <Descriptions.Item label="Số giờ đã làm">

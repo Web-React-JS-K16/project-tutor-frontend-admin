@@ -1,7 +1,16 @@
 $color-main: #faad14;
 $color-light: #fffbe6;
 $color-dark: #001529;
+$color-grey-1: #656565;
+$color-grey-2: rgba(0, 0, 0, 0.45);
+$color-grey-3: #f9f9f9;
+$color-background: #fff295;
+
 // sub color
+$color-1: #fffbe6;
+$color-2: #fff1b8;
+$color-4: #ffd666;
+$color-5: #ffc53d;
 $color-7: #d48806;
 $color-8: #ad6800;
 $color-9: #874d00;
@@ -51,7 +60,7 @@ input {
 }
 .message {
   text-align: center;
-  &--error{
+  &--error {
     color: #d93025;
   }
   &--success {
@@ -60,26 +69,29 @@ input {
 }
 // tab panel
 .ant-tabs-tab {
-  &:hover{
+  &:hover {
     color: $color-main !important;
   }
 }
-.ant-tabs-tab-active{
+.ant-tabs-tab-active {
   color: $color-main !important;
 }
 
 .ant-tabs-ink-bar {
-  background-color:  $color-main;
+  background-color: $color-main;
 }
 
 // slide bar
 .makeStyles-blue-23 {
   background-color: $color-main !important;
-  box-shadow:
-   0 12px 20px -10px #fffbe6,
-   0 4px 20px 0 #fff1b8,
+  box-shadow: 0 12px 20px -10px #fffbe6, 0 4px 20px 0 #fff1b8;
 }
 
 .ant-btn-danger {
   background-color: $color-11 !important;
+}
+
+// spin
+.ant-spin {
+  color: $color-main;
 }
