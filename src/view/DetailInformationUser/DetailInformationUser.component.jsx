@@ -140,7 +140,7 @@ export const DetailInformationUser = ({
                       </Descriptions.Item>
                       <Descriptions.Item label="Công việc đã làm">{user.jobs}</Descriptions.Item>
                       <Descriptions.Item label="Số giờ đã làm">
-                        {user.hoursWorked}
+                        {user.hoursWorked} h
                       </Descriptions.Item>
                       <Descriptions.Item label="Tỉ lệ đánh giá">
                         <Rate disabled defaultValue={user.ratings} />
@@ -149,7 +149,7 @@ export const DetailInformationUser = ({
                     </Descriptions>
                     <div>
                       <span>Tỉ lệ thành công</span>
-                      <Progress percent={50} size="small" status="active" />
+                      <Progress percent={user.successRate} size="small" status="active" />
                     </div>
                   </div>
                 ) : null}

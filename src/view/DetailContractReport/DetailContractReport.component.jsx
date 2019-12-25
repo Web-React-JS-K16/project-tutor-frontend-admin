@@ -58,6 +58,7 @@ export const DetailReport = ({ getDetailReport, getMessage, changeStatusContract
     const { contract } = report
     contract.status = data.status
     contract.endDate = data.endDate
+    contract.isPaid = data.isPaid
     const newReport = { ...data, contract }
     setReport(newReport)
     message.success(_message)
