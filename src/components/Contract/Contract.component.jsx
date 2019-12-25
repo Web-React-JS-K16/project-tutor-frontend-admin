@@ -1,3 +1,4 @@
+/* eslint-disable no-underscore-dangle */
 /* eslint-disable no-nested-ternary */
 /* eslint-disable react/prop-types */
 /* eslint-disable import/prefer-default-export */
@@ -20,7 +21,7 @@ export const ContractComponent = ({ contract }) => (
         </Descriptions.Item>
         <Descriptions.Item label="Tổng số giờ">{contract.workingHour}&nbsp;h</Descriptions.Item>
         <Descriptions.Item label="Ngày kết thúc">
-          {moment(contract.endDate).format('DD/MM/YYYY HH:MM')}
+          {contract.endDate ? moment(contract.endDate).format('DD/MM/YYYY HH:MM') : null}
         </Descriptions.Item>
         <Descriptions.Item label="Sô tiền trên một giờ">
           <NumberFormat
@@ -40,6 +41,11 @@ export const ContractComponent = ({ contract }) => (
           <Tag color={contract.isPaid ? 'green' : 'red'}>
             {contract.isPaid ? 'Đã thanh toán' : 'Chưa thanh toán'}
           </Tag>
+        </Descriptions.Item>
+        <Descriptions.Item label="Kĩ năng">
+          {contract.tags
+            ? contract.tags.map(item => <Tag color="gold">{item._id.name}</Tag>)
+            : null}
         </Descriptions.Item>
         <Descriptions.Item label="Nội dung">{contract.content}</Descriptions.Item>
       </Descriptions>

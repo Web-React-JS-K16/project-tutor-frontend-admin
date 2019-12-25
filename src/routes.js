@@ -22,6 +22,7 @@ import BusinessCenterIcon from '@material-ui/icons/BusinessCenter'
 import ChatIcon from '@material-ui/icons/Chat'
 import EqualizerIcon from '@material-ui/icons/Equalizer'
 import SupervisorAccountIcon from '@material-ui/icons/SupervisorAccount'
+import ShowChart from '@material-ui/icons/ShowChart'
 import CreateAdminContainer from './components/CreateAdmin/CreateAdmin.container'
 import AccountAdminPage from './view/AccountAdminPage/AccountAdminPage.component'
 import ManagerAccountUserContainer from './view/ManagerAccountUser/ManagerAccountUser.container'
@@ -32,6 +33,7 @@ import DetailContractPageContainer from './view/DetailContractPage/DetailContrac
 import ManagerReportContainer from './view/ManagerReport/ManagerReport.container'
 import DetailContractReportContainer from './view/DetailContractReport/DetailContractReport.container'
 import StatisticPage from './view/StatisticPage/StatisticPage.container'
+import TopSalePageBySkill from './view/TopSalePageBySkill/TopSalePageBySkill.container'
 
 const dashboardRoutes = [
   {
@@ -94,6 +96,14 @@ const dashboardRoutes = [
     component: StatisticPage,
     layout: '/admin',
   },
+  {
+    path: '/top-sales-skill',
+    name: 'Doanh thu theo kĩ năng',
+    rtlName: 'لوحة القيادة',
+    icon: ShowChart,
+    component: TopSalePageBySkill,
+    layout: '/admin',
+  },
 ]
 
 const navBarRoutes = [
@@ -134,6 +144,14 @@ const navBarRoutes = [
     rtlName: 'لوحة القيادة',
     icon: EqualizerIcon,
     component: StatisticPage,
+    layout: '/admin',
+  },
+  {
+    path: '/top-sales-skill',
+    name: 'Doanh thu theo kĩ năng',
+    rtlName: 'لوحة القيادة',
+    icon: ShowChart,
+    component: TopSalePageBySkill,
     layout: '/admin',
   },
   {

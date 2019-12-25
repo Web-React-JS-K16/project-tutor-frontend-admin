@@ -79,7 +79,7 @@ const ManagerReport = ({ getAllReport, history }) => {
   }
 
   useEffect(() => {
-    getAllReport({ limit: 10, offset: 1 }, getAllReportSuccess, getAllReportFailure)
+    getAllReport({ limit: 5, offset: 1 }, getAllReportSuccess, getAllReportFailure)
   }, [getAllReport])
 
   const onChangeTable = page => {

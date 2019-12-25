@@ -2,7 +2,6 @@
 /* eslint-disable react/state-in-constructor */
 /* eslint-disable import/prefer-default-export */
 import React from 'react'
-// import { Bar } from 'react-chartjs-2'
 import { DatePicker } from 'antd'
 
 export const StatisticDatePickerComponent = props => {

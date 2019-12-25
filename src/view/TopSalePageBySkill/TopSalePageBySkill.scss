@@ -1,0 +1,30 @@
+@import '../../common/common.style.scss';
+
+.top-sales {
+    margin-top: -30px;
+    &__header {
+        h3 {
+            color: $color-main;
+            text-align: center;
+            font-size: 24px;
+        }
+
+        &--select {
+            display: flex;
+
+            .ant-select {
+                margin-right: 20px;
+            }
+        }
+
+        &--picker {
+            div {
+                display: inline-block;
+            }
+            .ant-btn {
+                color: #fff;
+                margin-left: 20px;
+            }
+        }
+    }
+}

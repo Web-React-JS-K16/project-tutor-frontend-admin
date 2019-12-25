@@ -33,7 +33,7 @@ export const DetailContractPage = ({ getDetailContract, changeStatusContract, hi
   }
 
   const changeStatusContractSuccess = ({ data, _message }) => {
-    setcontract({ ...contract, status: data.status })
+    setcontract({ ...contract, status: data.status, endDate: data.endDate })
     message.success(_message)
   }
 

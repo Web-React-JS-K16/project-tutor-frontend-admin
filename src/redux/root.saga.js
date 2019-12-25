@@ -6,6 +6,7 @@ import contractSaga from './contract/contract.sagas'
 import reportSaga from './report/report.sagas'
 import chatSaga from './chat/chat.sagas'
 import statisticSage from './statistic/statistic.sagas'
+import skillSaga from './skill/skill.saga'
 
 export default function* rootSagas() {
   yield all([
@@ -16,5 +17,6 @@ export default function* rootSagas() {
     call(reportSaga),
     call(chatSaga),
     call(statisticSage),
+    call(skillSaga),
   ])
 }
