@@ -1,0 +1,61 @@
+@import '../../common/common.style.scss';
+
+.teacher-item {
+  border-radius: 5px;
+  background-color: $color-light;
+  padding: 11px 20px;
+  border: 1px solid $color-4;
+  display: flex;
+  justify-content: space-around;
+  &__rank {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  &__content {
+    margin-left: 15px;
+    &__basic-info {
+      display: flex;
+      justify-content: flex-start;
+      align-items: flex-start;
+      &__left {
+        width: 5em;
+        height: 5em;
+        margin-right: 25px;
+        img {
+          width: 100%;
+          height: 100%;
+          border-radius: 50%;
+        }
+      }
+      &__right {
+        .name {
+          font-weight: 500;
+        }
+        .address {
+          font-size: 13px;
+        }
+        .ratings {
+          .ant-rate {
+            font-size: 18px;
+          }
+        }
+      }
+    }
+    &__sub-info {
+      margin: 10px 0;
+      font-size: 15px;
+      .cost {
+      }
+      .jobs {
+      }
+    }
+    .ant-divider {
+      margin: 0px;
+    }
+    .ant-btn {
+      margin: 10px 0 0;
+    }
+  }
+}

@@ -1,0 +1,63 @@
+.chat {
+  &__title {
+      text-align: center;
+    padding: 10px;
+    box-shadow: 0 12px 20px -10px #fffbe6, 0 4px 20px 0 #fff1b8;
+    border-bottom: 1px solid rgba(#faad14, 0.3);
+
+    .ant-avatar {
+      margin-right: 5px;
+    }
+
+    &--student {
+      text-align: left;
+    }
+
+    &--teacher {
+      text-align: right;
+    }
+  }
+
+  &__content {
+    padding: 10px 10px 20px 10px;
+    height: 600px;
+    overflow-y: auto;
+
+    .ant-avatar {
+      margin-right: 10px;
+    }
+    &--student {
+      text-align: left;
+      margin-top: 5px;
+
+      .message-content {
+        text-align: left;
+        padding: 3px 10px;
+        border: 1px solid rgba(#faad14, 0.3);
+        border-radius: 999px;
+        -webkit-box-decoration-break: clone;
+        box-decoration-break: clone;
+        line-height: 2.3;
+        border: 1px solid rgba(#faad14, 0.3);
+        color: #fff;
+        background-image: linear-gradient(to right, #faad14, #ffc53d);
+      }
+    }
+
+    &--teacher {
+      text-align: right;
+      margin-top: 5px;
+
+      .message-content {
+        text-align: right;
+        padding: 3px 10px;
+        line-height: 2.3;
+        -webkit-box-decoration-break: clone;
+        box-decoration-break: clone;
+        background: #f2f2f2;
+        border: 1px solid rgba(#faad14, 0.3);
+        border-radius: 999px;
+      }
+    }
+  }
+}

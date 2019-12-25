@@ -8,14 +8,12 @@ import { makeStyles } from "@material-ui/core/styles";
 import Drawer from "@material-ui/core/Drawer";
 import Hidden from "@material-ui/core/Hidden";
 import List from "@material-ui/core/List";
+import ExitToApp from '@material-ui/icons/ExitToApp'
 import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
 import Icon from "@material-ui/core/Icon";
-// core components
-import AdminNavbarLinks from "../Navbars/AdminNavbarLinks.js";
-// import RTLNavbarLinks from "../Navbars/RTLNavbarLinks.js";
-
 import styles from "../../assets/jss/material-dashboard-react/components/sidebarStyle.js";
+import { Button } from 'antd';
 
 const useStyles = makeStyles(styles);
 
@@ -25,6 +23,11 @@ export default function Sidebar(props) {
   function activeRoute(routeName) {
     return window.location.href.indexOf(routeName) > -1 ? true : false;
   }
+
+  const handleLogout = () => {
+    props.logout()
+  }
+
   const { color, logo, image, logoText, routes } = props;
   var links = (
     <List className={classes.list}>
@@ -61,12 +64,12 @@ export default function Sidebar(props) {
                   {prop.icon}
                 </Icon>
               ) : (
-                <prop.icon
-                  className={classNames(classes.itemIcon, whiteFontClasses, {
-                    [classes.itemIconRTL]: props.rtlActive
-                  })}
-                />
-              )}
+                  <prop.icon
+                    className={classNames(classes.itemIcon, whiteFontClasses, {
+                      [classes.itemIconRTL]: props.rtlActive
+                    })}
+                  />
+                )}
               <ListItemText
                 primary={props.rtlActive ? prop.rtlName : prop.name}
                 className={classNames(classes.itemText, whiteFontClasses, {
@@ -81,19 +84,20 @@ export default function Sidebar(props) {
     </List>
   );
   var brand = (
-    <div className={classes.logo}>
+    <div className={classes.logo} style={{display: 'flex'}}>
       <a
-        href="https://www.creative-tim.com?ref=mdr-sidebar"
+        href="/"
         className={classNames(classes.logoLink, {
           [classes.logoLinkRTL]: props.rtlActive
         })}
-        target="_blank"
       >
         <div className={classes.logoImage}>
           <img src={logo} alt="logo" className={classes.img} />
         </div>
         {logoText}
+        
       </a>
+      <a onClick={handleLogout} style={{display: 'flex',alignItems: 'center', marginLeft: 'auto'}}><ExitToApp fontSize="large" style={{ color: "#faad14"}}/></a>
     </div>
   );
   return (
@@ -114,10 +118,9 @@ export default function Sidebar(props) {
           }}
         >
           {brand}
-           <div className={classes.sidebarWrapper}>
-            {props.rtlActive ? <RTLNavbarLinks /> : <AdminNavbarLinks />}
+          <div className={classes.sidebarWrapper}>
             {links}
-          </div> 
+          </div>
           {image !== undefined ? (
             <div
               className={classes.background}

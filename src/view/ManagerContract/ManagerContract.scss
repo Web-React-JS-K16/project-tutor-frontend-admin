@@ -1,0 +1,27 @@
+.table-contract {
+  .ant-table-row:hover {
+    cursor: pointer;
+  }
+
+  &__header {
+    display: flex;
+    justify-content: flex-start;
+    margin-bottom: 30px;
+
+    &--picker {
+      display: flex;
+      margin-left: 50px;
+      div {
+        display: inline-block;
+
+        .ant-calendar-picker:first-child {
+          margin-right: 20px;
+        }
+      }
+      .ant-btn {
+        color: #fff;
+        margin-left: inherit;
+      }
+    }
+  }
+}

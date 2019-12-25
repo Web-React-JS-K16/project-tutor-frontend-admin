@@ -17,7 +17,9 @@ import {
   Progress,
   Spin,
   Modal,
+  Icon,
 } from 'antd'
+import NumberFormat from 'react-number-format'
 import * as moment from 'moment'
 
 const { confirm } = Modal
@@ -69,7 +71,7 @@ export const DetailInformationUser = ({
             textAlign: 'center',
           }}
         >
-          <Spin size="large" />
+          <Spin indicator={<Icon size="large" type="loading" spin />} />
         </div>
       ) : errorInfo ? (
         <Alert
@@ -91,6 +93,7 @@ export const DetailInformationUser = ({
                 <Avatar size={64} src={user.userId.avatar} />
                 <div className="ant-page-header-content__ava--text">
                   <p>{user.userId.displayName}</p>
+
                   <Tag color={user.userId.isActive ? 'green' : 'red'}>
                     {user.userId.isActive ? 'Đã xác thực' : 'Chưa xác thực'}{' '}
                   </Tag>
@@ -103,12 +106,16 @@ export const DetailInformationUser = ({
                       {user.userId.typeID === 0 ? 'Học sinh' : 'Giáo viên'}
                     </Descriptions.Item>
                     <Descriptions.Item label="Email">{user.userId.email}</Descriptions.Item>
+                    <Descriptions.Item label="Giới tính">
+                      {user.userId.gender === 'male' ? 'Nam' : 'Nữ'}
+                    </Descriptions.Item>
                     <Descriptions.Item label="Số điện thoại">{user.userId.phone}</Descriptions.Item>
                     <Descriptions.Item label="Ngày sinh">
-                      {moment(user.userId.birthdate).format('L')}
+                      {moment(user.userId.birthdate).format('DD/MM/YYYY')}
                     </Descriptions.Item>
                     <Descriptions.Item label="Địa chỉ">
-                      268 Lý Thái Tổ, quận 3, Hồ Chí Minh
+                      {user.userId.district ? `${user.userId.district.name}, ` : ''}
+                      {user.userId.city ? `${user.userId.city.name}` : ''}
                     </Descriptions.Item>
                     {user.tags ? (
                       <Descriptions.Item label="Kĩ năng">
@@ -122,10 +129,18 @@ export const DetailInformationUser = ({
                 {user.userId.typeID === 1 ? (
                   <div className="ant-page-header-content__description">
                     <Descriptions size="large" column={1}>
-                      <Descriptions.Item label="Mức lương (vnđ/h)">{user.salary}</Descriptions.Item>
+                      <Descriptions.Item label="Mức lương (VND/h)">
+                        <NumberFormat
+                          value={user.salary.$numberDecimal * 1000}
+                          displayType="text"
+                          thousandSeparator
+                          prefix=""
+                          renderText={value => <span>{value}</span>}
+                        />
+                      </Descriptions.Item>
                       <Descriptions.Item label="Công việc đã làm">{user.jobs}</Descriptions.Item>
                       <Descriptions.Item label="Số giờ đã làm">
-                        {user.hoursWorked}
+                        {user.hoursWorked} h
                       </Descriptions.Item>
                       <Descriptions.Item label="Tỉ lệ đánh giá">
                         <Rate disabled defaultValue={user.ratings} />
@@ -134,7 +149,7 @@ export const DetailInformationUser = ({
                     </Descriptions>
                     <div>
                       <span>Tỉ lệ thành công</span>
-                      <Progress percent={50} size="small" status="active" />
+                      <Progress percent={user.successRate} size="small" status="active" />
                     </div>
                   </div>
                 ) : null}

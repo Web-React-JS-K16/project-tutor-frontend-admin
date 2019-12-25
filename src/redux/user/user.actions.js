@@ -6,6 +6,10 @@ export const loginStart = (email, password) => ({
   payload: { email, password },
 })
 
+export const logout = () => ({
+  type: UserTypes.LOG_OUT,
+})
+
 export const loginSuccess = user => ({
   type: UserTypes.LOGIN_SUCCESS,
   payload: user,

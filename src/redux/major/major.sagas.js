@@ -7,7 +7,6 @@ import MajorService from '../../services/major.service'
 function* getAll() {
   try {
     const data = yield MajorService.getAll()
-    console.log(data)
     yield put(getAllSuccess(data))
   } catch (err) {
     yield put(getAllFailure(err.message))

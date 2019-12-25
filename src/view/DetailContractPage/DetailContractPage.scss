@@ -1,0 +1,67 @@
+.contract {
+    box-shadow: 0 12px 20px -10px #fffbe6, 0 4px 20px 0 #fff1b8;
+    border: 1px solid darken(#faad14, 1%);
+    border-radius: 4px;
+    padding: 10px 50px;
+    margin: 0 30px;
+
+    &__title {
+        text-align: center;
+    }
+
+    &__information {
+        margin: 5rem 0;
+        padding-left: 10%;
+
+        td:nth-child(2n) {
+            padding-left: 55px;
+        }
+    }
+
+    &__content {
+        display: flex;
+        justify-content: space-between;
+        padding-left: 10%;
+        
+        &--user {
+            width: 50%;
+        }
+
+        &-student {
+            padding-left: 55px;
+        }
+
+
+        &--title {
+           margin-bottom: 30px;
+    
+           .ant-avatar {
+               margin-left: -10px;
+           }
+
+           .name {
+               margin-left: 10px;
+           } 
+        }
+    }
+
+    .ant-steps {
+
+        flex-wrap: wrap;
+        .ant-steps-item {
+            min-width: 250px;
+            margin-top: 15px;
+        }
+    }
+
+    .btn-complete-contract {
+        margin: 10px 0;
+        color: #ffffff; 
+        transition: all .2s;
+
+        &:hover {
+            transform: scale(1.05);
+            box-shadow: 0 12px 20px -10px #fffbe6, 0 4px 20px 0 #fff1b8;
+        }
+    }
+}
