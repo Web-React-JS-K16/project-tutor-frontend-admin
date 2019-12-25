@@ -23,6 +23,7 @@ import ChatIcon from '@material-ui/icons/Chat'
 import EqualizerIcon from '@material-ui/icons/Equalizer'
 import SupervisorAccountIcon from '@material-ui/icons/SupervisorAccount'
 import ShowChart from '@material-ui/icons/ShowChart'
+import SortIcon from '@material-ui/icons/Sort'
 import CreateAdminContainer from './components/CreateAdmin/CreateAdmin.container'
 import AccountAdminPage from './view/AccountAdminPage/AccountAdminPage.component'
 import ManagerAccountUserContainer from './view/ManagerAccountUser/ManagerAccountUser.container'
@@ -34,6 +35,7 @@ import ManagerReportContainer from './view/ManagerReport/ManagerReport.container
 import DetailContractReportContainer from './view/DetailContractReport/DetailContractReport.container'
 import StatisticPage from './view/StatisticPage/StatisticPage.container'
 import TopSalePageBySkill from './view/TopSalePageBySkill/TopSalePageBySkill.container'
+import SalaryStatisticPageContainer from './view/SalaryStatisticsPage/SalaryStatisticsPage.container'
 
 const dashboardRoutes = [
   {
@@ -98,10 +100,23 @@ const dashboardRoutes = [
   },
   {
     path: '/top-sales-skill',
-    name: 'Doanh thu theo kĩ năng',
+    name: 'Top doanh thu kĩ năng',
     rtlName: 'لوحة القيادة',
-    icon: ShowChart,
     component: TopSalePageBySkill,
+    layout: '/admin',
+  },
+  {
+    path: '/statistic',
+    name: 'Thống kê',
+    rtlName: 'لوحة القيادة',
+    component: StatisticPage,
+    layout: '/admin',
+  },
+  {
+    path: '/salary-statistic',
+    name: 'Top doanh thu người dạy',
+    rtlName: 'لوحة القيادة',
+    component: SalaryStatisticPageContainer,
     layout: '/admin',
   },
 ]
@@ -148,10 +163,18 @@ const navBarRoutes = [
   },
   {
     path: '/top-sales-skill',
-    name: 'Doanh thu theo kĩ năng',
+    name: 'Top doanh thu kĩ năng',
+    rtlName: 'لوحة القيادة',
+    icon: SortIcon,
+    component: TopSalePageBySkill,
+    layout: '/admin',
+  },
+  {
+    path: '/salary-statistic',
+    name: 'Top doanh thu người dạy',
     rtlName: 'لوحة القيادة',
     icon: ShowChart,
-    component: TopSalePageBySkill,
+    component: SalaryStatisticPageContainer,
     layout: '/admin',
   },
   {
