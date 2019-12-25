@@ -46,11 +46,13 @@ export class TopSalePageBySkill extends Component {
 
   handleSelect = mode => {
     const { getSalesBykill } = this.props
-    const { endDate } = this.state
     if (mode === 'all') {
-      getSalesBykill({ endDate, mode }, this.getSalesSuccess, this.getSalesFailure)
+      this.setState({ endDate: null, mode }, () =>
+        getSalesBykill({ endDate: null, mode }, this.getSalesSuccess, this.getSalesFailure)
+      )
+    } else {
+      this.setState({ mode, data: [], endDate: null })
     }
-    this.setState({ mode, data: [], endDate: null })
   }
 
   getSalesSuccess = ({ data }) => {
