@@ -58,10 +58,8 @@
         margin: auto;
       }
       .teacher-item {
-        margin-bottom: 10px;
-        &:nth-last-child(1) {
-          margin-bottom: 0;
-        }
+        width: 500px;
+        margin-bottom: 13px;
       }
     }
   }
