@@ -7,6 +7,7 @@
 
 import React, { useEffect, useState } from 'react'
 import { Row, Col, Spin, Icon, Select, DatePicker, Button, message, Empty } from 'antd'
+import * as moment from 'moment'
 import TeacherItem from '../../components/TeacherItem/TeacherItem.component'
 import './SalaryStatisticsPage.style.scss'
 
@@ -19,13 +20,13 @@ const SalaryStatisticsPage = ({
   onClearStatisticState,
 }) => {
   const [type, setType] = useState('date')
-  const [pickerData, setPickerData] = useState(null)
+  const [pickerData, setPickerData] = useState()
   const [quarterData, setQuarterData] = useState(1)
-  const [isDisabled, setIsDisabled] = useState(true)
+  const [isDisabled, setIsDisabled] = useState(false)
 
   useEffect(() => {
     onClearStatisticState()
-    getTeacherStatisticalData({ type: 'date' })
+    getTeacherStatisticalData({ type: 'date', date: Date.now() })
   }, [onClearStatisticState, getTeacherStatisticalData])
 
   const onChangeStatisticalType = value => {
@@ -114,7 +115,7 @@ const SalaryStatisticsPage = ({
 
       <div className="salary-statistics-page__wrapper">
         <div className="salary-statistics-page__wrapper__header">
-          <h3>Biểu đồ doanh thu</h3>
+          <h3>Top 10 doanh thu của giáo viên</h3>
         </div>
         <Row>
           <div className="salary-statistics-page__wrapper__select-type">
@@ -128,6 +129,7 @@ const SalaryStatisticsPage = ({
             {type === 'date' && (
               <DatePicker
                 format="DD/MM/YYYY"
+                defaultValue={moment(new Date(Date.now()), 'DD/MM/YYYY')}
                 onChange={onChangePickerData}
                 placeholder="Chọn ngày"
               />
@@ -178,9 +180,19 @@ const SalaryStatisticsPage = ({
             <Row>
               <div className="salary-statistics-page__wrapper__statistics">
                 {getTeacherStatisticalDataObj.data.length === 0 && <Empty />}
-                <Col span={16}>
-                  {getTeacherStatisticalDataObj.data.map(element => {
-                    return <TeacherItem key={element.teacher._id} teacher={element.teacher} />
+                <Col>
+                  {getTeacherStatisticalDataObj.data.map((element, index) => {
+                    const rank = {
+                      number: index,
+                      salary: element.salary,
+                    }
+                    return (
+                      <TeacherItem
+                        key={element.teacher._id}
+                        rank={rank}
+                        teacher={element.teacher}
+                      />
+                    )
                   })}
                 </Col>
               </div>
