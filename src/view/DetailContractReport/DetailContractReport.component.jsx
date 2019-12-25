@@ -4,7 +4,7 @@
 
 import './DetailContractReport.scss'
 import React, { useEffect, useState } from 'react'
-import { message, Spin, PageHeader, Button, Alert, Descriptions } from 'antd'
+import { message, Spin, PageHeader, Button, Alert, Descriptions, Icon } from 'antd'
 import * as moment from 'moment'
 import { ContractComponent } from '../../components/Contract/Contract.component'
 import { Chat } from '../../components/Chat/Chat.component'
@@ -163,7 +163,7 @@ export const DetailReport = ({ getDetailReport, getMessage, changeStatusContract
         </>
       ) : (
         <div style={{ textAlign: 'center' }}>
-          <Spin />
+          <Spin indicator={<Icon type="loading" spin />} />
         </div>
       )}
     </>

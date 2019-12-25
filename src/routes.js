@@ -17,7 +17,6 @@
 */
 // @material-ui/icons
 import Dashboard from '@material-ui/icons/Dashboard'
-import Person from '@material-ui/icons/Person'
 import BusinessCenterIcon from '@material-ui/icons/BusinessCenter'
 import ChatIcon from '@material-ui/icons/Chat'
 import EqualizerIcon from '@material-ui/icons/Equalizer'
@@ -25,7 +24,7 @@ import SupervisorAccountIcon from '@material-ui/icons/SupervisorAccount'
 import ShowChart from '@material-ui/icons/ShowChart'
 import SortIcon from '@material-ui/icons/Sort'
 import CreateAdminContainer from './components/CreateAdmin/CreateAdmin.container'
-import AccountAdminPage from './view/AccountAdminPage/AccountAdminPage.component'
+import AccountAdminPage from './view/AccountAdminPage/AccountAdminPage.container'
 import ManagerAccountUserContainer from './view/ManagerAccountUser/ManagerAccountUser.container'
 import DetailInformationUserContainer from './view/DetailInformationUser/DetailInformationUser.container'
 import ManagerTagSkillContainer from './view/ManagerTagSkill/ManagerTagSkill.container'
@@ -177,13 +176,13 @@ const navBarRoutes = [
     component: SalaryStatisticPageContainer,
     layout: '/admin',
   },
-  {
-    path: '/account/admin',
-    name: 'Tài khoản admin',
-    icon: Person,
-    component: AccountAdminPage,
-    layout: '/admin',
-  },
+  // {
+  //   path: '/account/admin',
+  //   name: 'Tài khoản admin',
+  //   icon: Person,
+  //   component: AccountAdminPage,
+  //   layout: '/admin',
+  // },
 ]
 
 export { dashboardRoutes, navBarRoutes }

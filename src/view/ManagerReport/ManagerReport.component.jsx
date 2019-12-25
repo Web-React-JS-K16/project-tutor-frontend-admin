@@ -5,7 +5,7 @@
 import './ManagerReport.scss'
 
 import React, { useEffect, useState } from 'react'
-import { Table, Spin, Avatar } from 'antd'
+import { Table, Spin, Avatar, Icon } from 'antd'
 import * as moment from 'moment'
 import LinesEllipsis from 'react-lines-ellipsis'
 import CustomPagination from '../../components/Pagination/Pagination.component'
@@ -95,7 +95,7 @@ const ManagerReport = ({ getAllReport, history }) => {
             textAlign: 'center',
           }}
         >
-          <Spin />
+          <Spin indicator={<Icon type="loading" spin />} />
         </div>
       ) : err ? (
         <Alert

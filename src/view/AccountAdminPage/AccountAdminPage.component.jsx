@@ -1,28 +1,16 @@
 /* eslint react/prop-types: 0 */
+import './AccountAdminPage.scss'
 import React from 'react'
-import { Tabs } from 'antd'
-import CreateAdminContainer from '../../components/CreateAdmin/CreateAdmin.container'
-import ListAdminAccount from '../../components/ListAdminAccount/ListAdminAccount.component'
+import { Avatar, Icon } from 'antd'
 
-const { TabPane } = Tabs
-
-function callback(key) {
-  console.log(key)
-}
-
-const AccountAdminPage = () => {
-  return (
-    <div className="account-page">
-      <Tabs defaultActiveKey="1" onChange={callback}>
-        <TabPane tab="Danh sách tài khoản" key={1}>
-          <ListAdminAccount />
-        </TabPane>
-        <TabPane tab="Tạo tài khoản" key={2}>
-          <CreateAdminContainer />
-        </TabPane>
-      </Tabs>
+const AccountAdminPage = ({ user }) => (
+  <div className="account-page">
+    <Avatar src={user.avatar} size={156} />
+    <div>
+      <Icon type="user" />
+      <span>Tên hiển thị: {user.displayName}</span>
     </div>
-  )
-}
+  </div>
+)
 
 export default AccountAdminPage

@@ -63,7 +63,7 @@ export const ContractComponent = ({ contract }) => (
 
         <Timeline>
           <Timeline.Item dot={<Icon type="mail" style={{ fontSize: '16px', color: '#faad14' }} />}>
-            {contract.teacherId.email || '...'}
+            {contract.teacherId.email || 'Chưa cập nhật gmail'}
           </Timeline.Item>
           {contract.teacherId.gender === 'male' ? (
             <Timeline.Item dot={<Icon type="man" style={{ fontSize: '16px', color: '#faad14' }} />}>
@@ -79,22 +79,25 @@ export const ContractComponent = ({ contract }) => (
             <Timeline.Item
               dot={<Icon type="woman" style={{ fontSize: '16px', color: '#faad14' }} />}
             >
-              ...
+              Chưa cập nhật giới tính
             </Timeline.Item>
           )}
           <Timeline.Item dot={<Icon type="phone" style={{ fontSize: '16px', color: '#faad14' }} />}>
-            {contract.teacherId.phone || '...'}
+            {contract.teacherId.phone || 'Chưa cập nhật số điện thoại'}
           </Timeline.Item>
           <Timeline.Item
             dot={<Icon type="calendar" style={{ fontSize: '16px', color: '#faad14' }} />}
           >
-            {moment(contract.teacherId.birthdate).format('DD/MM/YYYY') || '...'}
+            {moment(contract.teacherId.birthdate).format('DD/MM/YYYY') || 'Chưa cập nhật ngày sinh'}
           </Timeline.Item>
           <Timeline.Item
             dot={<Icon type="environment" style={{ fontSize: '16px', color: '#faad14' }} />}
           >
             {contract.teacherId.district ? `${contract.teacherId.district.name}, ` : ''}
             {contract.teacherId.city ? `${contract.teacherId.city.name}` : ''}
+            {!contract.teacherId.district && !contract.teacherId.city
+              ? 'Chưa cập nhật địa chỉ'
+              : ''}
           </Timeline.Item>
         </Timeline>
       </div>
@@ -109,7 +112,7 @@ export const ContractComponent = ({ contract }) => (
 
         <Timeline>
           <Timeline.Item dot={<Icon type="mail" style={{ fontSize: '16px', color: '#faad14' }} />}>
-            {contract.studentId.email || '...'}
+            {contract.studentId.email || 'Chưa cập nhật gmail'}
           </Timeline.Item>
           {contract.studentId.gender === 'male' ? (
             <Timeline.Item dot={<Icon type="man" style={{ fontSize: '16px', color: '#faad14' }} />}>
@@ -125,22 +128,26 @@ export const ContractComponent = ({ contract }) => (
             <Timeline.Item
               dot={<Icon type="woman" style={{ fontSize: '16px', color: '#faad14' }} />}
             >
-              ...
+              {' '}
+              Chưa cập nhật giới tính
             </Timeline.Item>
           )}
           <Timeline.Item dot={<Icon type="phone" style={{ fontSize: '16px', color: '#faad14' }} />}>
-            {contract.studentId.phone || '...'}
+            {contract.studentId.phone || 'Chưa cập nhật số điện thoại'}
           </Timeline.Item>
           <Timeline.Item
             dot={<Icon type="calendar" style={{ fontSize: '16px', color: '#faad14' }} />}
           >
-            {moment(contract.studentId.birthdate).format('DD/MM/YYYY') || '...'}
+            {moment(contract.studentId.birthdate).format('DD/MM/YYYY') || 'Chưa cập nhật ngày sinh'}
           </Timeline.Item>
           <Timeline.Item
             dot={<Icon type="environment" style={{ fontSize: '16px', color: '#faad14' }} />}
           >
             {contract.studentId.district ? `${contract.studentId.district.name}, ` : ''}
             {contract.studentId.city ? `${contract.studentId.city.name}` : ''}
+            {!contract.studentId.district && !contract.studentId.city
+              ? 'Chưa cập nhật địa chỉ'
+              : ''}
           </Timeline.Item>
         </Timeline>
       </div>

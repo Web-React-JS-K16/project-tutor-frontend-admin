@@ -17,6 +17,7 @@ import {
   Progress,
   Spin,
   Modal,
+  Icon,
 } from 'antd'
 import NumberFormat from 'react-number-format'
 import * as moment from 'moment'
@@ -70,7 +71,7 @@ export const DetailInformationUser = ({
             textAlign: 'center',
           }}
         >
-          <Spin />
+          <Spin indicator={<Icon size="large" type="loading" spin />} />
         </div>
       ) : errorInfo ? (
         <Alert

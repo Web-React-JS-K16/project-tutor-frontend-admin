@@ -9,7 +9,8 @@ import 'perfect-scrollbar/css/perfect-scrollbar.css'
 // @material-ui/core components
 import { makeStyles } from '@material-ui/core/styles'
 // core components
-// import Navbar from '../components/Navbars/Navbar'
+import { connect } from 'react-redux'
+import Navbar from '../components/Navbars/Navbar'
 import Footer from '../components/Footer/Footer'
 import Sidebar from '../components/Sidebar/Sidebar'
 
@@ -20,6 +21,7 @@ import bgImage from '../assets/img/sidebar-2.jpg'
 import logo from '../assets/img/reactlogo.png'
 // eslint-disable-next-line import/no-named-as-default
 import DetailInformationUser from '../view/DetailInformationUser/DetailInformationUser.component'
+import { logout } from '../redux/user/user.actions'
 
 let ps
 
@@ -32,13 +34,13 @@ const switchRoutes = (
       }
       return null
     })}
-    <Redirect from="/admin" to="/admin/account/admin" />
+    <Redirect from="/admin" to="/admin/account/user" />
   </Switch>
 )
 
 const useStyles = makeStyles(styles)
 
-export default function Admin({ ...rest }) {
+function Admin({ ...rest }) {
   // styles
   const classes = useStyles()
   // ref to help us initialize PerfectScrollbar on windows devices
@@ -80,7 +82,7 @@ export default function Admin({ ...rest }) {
     <div className={classes.wrapper}>
       <Sidebar
         routes={navBarRoutes}
-        logoText="K16 React Team"
+        logoText={rest.user.displayName}
         logo={logo}
         image={image}
         handleDrawerToggle={handleDrawerToggle}
@@ -89,7 +91,7 @@ export default function Admin({ ...rest }) {
         {...rest}
       />
       <div className={classes.mainPanel} ref={mainPanel}>
-        {/* <Navbar routes={dashboardRoutes} handleDrawerToggle={handleDrawerToggle} {...rest} /> */}
+        <Navbar routes={dashboardRoutes} handleDrawerToggle={handleDrawerToggle} {...rest} />
         {/* On the /maps route we want the map to be on full screen - this is not possible if the content and conatiner classes are present because they have some paddings which would make the map smaller */}
         {getRoute() ? (
           <div className={classes.content}>
@@ -103,3 +105,9 @@ export default function Admin({ ...rest }) {
     </div>
   )
 }
+
+const mapStateToProps = state => ({
+  user: state.user.currentUser,
+})
+
+export default connect(mapStateToProps, { logout })(Admin)

@@ -7,7 +7,7 @@
 import './ManagerContract.scss'
 
 import React, { useEffect, useState } from 'react'
-import { Table, Tag, Spin, Rate, Select, Alert, Button } from 'antd'
+import { Table, Tag, Spin, Rate, Select, Alert, Button, Icon } from 'antd'
 import * as monment from 'moment'
 import NumberFormat from 'react-number-format'
 import CustomPagination from '../../components/Pagination/Pagination.component'
@@ -207,7 +207,7 @@ const ManagerContract = ({ getAllContract, history }) => {
             textAlign: 'center',
           }}
         >
-          <Spin />
+          <Spin indicator={<Icon type="loading" spin />} />
         </div>
       ) : err ? (
         <Alert

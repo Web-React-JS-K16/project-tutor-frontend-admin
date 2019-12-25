@@ -5,7 +5,7 @@
 /* eslint-disable import/prefer-default-export */
 import './DetailContractPage.scss'
 import React, { useEffect, useState } from 'react'
-import { message, Spin, PageHeader, Button, Steps, Divider } from 'antd'
+import { message, Spin, PageHeader, Button, Steps, Divider, Icon } from 'antd'
 import { ContractComponent } from '../../components/Contract/Contract.component'
 import EContractType from '../../enum/EContractType'
 
@@ -56,7 +56,7 @@ export const DetailContractPage = ({ getDetailContract, changeStatusContract, hi
           <ContractComponent contract={contract} />
         ) : (
           <div style={{ textAlign: 'center' }}>
-            <Spin />
+            <Spin indicator={<Icon type="loading" spin />} />
           </div>
         )}
       </div>
