@@ -1,3 +1,4 @@
+/* eslint-disable no-nested-ternary */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable react/prop-types */
 /* eslint-disable import/prefer-default-export */
@@ -134,7 +135,21 @@ export const DetailReport = ({ getDetailReport, getMessage, changeStatusContract
               )}
             </div>
           </div>
-          {report.contract.status >= 3 ? (
+          {report.contract.status === 3 ? (
+            <div
+              className="report"
+              style={{ marginTop: '20px', marginBottom: '20px', textAlign: 'center' }}
+            >
+              <h3>Hợp đồng này đã bị hủy</h3>
+            </div>
+          ) : report.contract.status === 5 ? (
+            <div
+              className="report"
+              style={{ marginTop: '20px', marginBottom: '20px', textAlign: 'center' }}
+            >
+              <h3>Hợp đồng này đã được chuyển tiền</h3>{' '}
+            </div>
+          ) : (
             <div
               className="report"
               style={{ marginTop: '20px', marginBottom: '20px', textAlign: 'center' }}
@@ -154,13 +169,13 @@ export const DetailReport = ({ getDetailReport, getMessage, changeStatusContract
                 <Button
                   className="btn btn-cancal-contract"
                   onClick={handleChangeStatusCancel}
-                  disabled={report.contract.status === 3 || report.contract.status === 3}
+                  disabled={report.contract.status === 5 || report.contract.status === 3}
                 >
                   Hoàn tiền cho người học
                 </Button>
               </div>
             </div>
-          ) : null}
+          )}
         </>
       ) : (
         <div style={{ textAlign: 'center' }}>
