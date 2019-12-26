@@ -76,7 +76,7 @@ const columns = [
       <span>
         <Tag color={EContractType.color[row.status]}>{EContractType.type[row.status]}</Tag>
         <Tag color={row.isPaid ? 'green' : 'red'} style={{ marginTop: '5px' }}>
-          {row.isPaid ? 'Đã thanh toán' : 'Chưa thanh toán'}
+          {row.isPaid ? 'Đã chuyển tiền' : 'Chưa chuyển tiền'}
         </Tag>
       </span>
     ),

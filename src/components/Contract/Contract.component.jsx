@@ -37,9 +37,9 @@ export const ContractComponent = ({ contract }) => (
             {EContractType.type[contract.status]}
           </Tag>
         </Descriptions.Item>
-        <Descriptions.Item label="Thanh toán">
+        <Descriptions.Item label="Chuyển tiền">
           <Tag color={contract.isPaid ? 'green' : 'red'}>
-            {contract.isPaid ? 'Đã thanh toán' : 'Chưa thanh toán'}
+            {contract.isPaid ? 'Đã chuyển tiền' : 'Chưa chuyển tiền'}
           </Tag>
         </Descriptions.Item>
         <Descriptions.Item label="Kĩ năng">
