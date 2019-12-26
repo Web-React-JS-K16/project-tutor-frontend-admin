@@ -231,7 +231,7 @@ export class StatisticPage extends Component {
       datasets: [
         {
           label: dataMode[mode].label,
-          data: data.map(item => item.total.$numberDecimal),
+          data: data.map(item => item.total),
           backgroundColor: dataMode[mode].backgroundColor,
           borderColor: dataMode[mode].borderColor,
           borderWidth: 1,

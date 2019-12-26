@@ -131,7 +131,7 @@ export const DetailInformationUser = ({
                     <Descriptions size="large" column={1}>
                       <Descriptions.Item label="Mức lương (VND/h)">
                         <NumberFormat
-                          value={user.salary.$numberDecimal * 1000}
+                          value={user.salary * 1000}
                           displayType="text"
                           thousandSeparator
                           prefix=""
