@@ -209,12 +209,11 @@ const userReducer = (state = INITIAL_STATE, action) => {
         },
       }
     case UserTypes.BLOCK_UNBLOCK_ACCOUNT_SUCCESS:
-      const { userId } = action.payload.data
       return {
         ...state,
         getInforUser: {
           isLoading: false,
-          data: { ...state.getInforUser.data, userId },
+          data: action.payload.data,
         },
       }
     default:

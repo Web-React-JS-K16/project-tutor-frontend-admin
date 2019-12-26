@@ -60,7 +60,7 @@ const columns = [
     key: 'tottal',
     render: (_id, row) => (
       <NumberFormat
-        value={row.workingHour * row.costPerHour.$numberDecimal * 1000}
+        value={row.workingHour * row.costPerHour * 1000}
         displayType="text"
         thousandSeparator
         prefix=""

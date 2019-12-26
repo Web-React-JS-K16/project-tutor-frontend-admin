@@ -25,7 +25,7 @@ export const ContractComponent = ({ contract }) => (
         </Descriptions.Item>
         <Descriptions.Item label="Sô tiền trên một giờ">
           <NumberFormat
-            value={contract.costPerHour.$numberDecimal * 1000}
+            value={contract.costPerHour * 1000}
             displayType="text"
             thousandSeparator
             prefix=""
